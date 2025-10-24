@@ -1,0 +1,5 @@
+.services { max-width:1200px; margin:40px auto; padding:0 20px; }
+.services-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:20px; }
+.service-card { background:#fff; padding:20px; border-radius:10px; box-shadow:0 6px 20px rgba(0,0,0,0.06); text-align:left; }
+.service-card img { width:64px; height:64px; object-fit:contain; }
+

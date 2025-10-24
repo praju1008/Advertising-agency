@@ -1,0 +1,25 @@
+.career-page {
+  font-family: Arial, sans-serif;
+  padding: 50px;
+  text-align: center;
+}
+
+.career-page h1 {
+  font-size: 36px;
+  color: #1c1c1c;
+  margin-bottom: 20px;
+}
+
+.career-page p {
+  font-size: 18px;
+  color: #555;
+}
+
+.career-page a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.career-page a:hover {
+  text-decoration: underline;
+}
