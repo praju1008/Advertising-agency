@@ -1,21 +1,52 @@
 .contact-page {
-  font-family: Arial, sans-serif;
-  padding: 50px;
-  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  color: #111;
 }
 
-.contact-page h1 {
-  font-size: 36px;
-  color: #1c1c1c;
-  margin-bottom: 20px;
+.contact-hero {
+  position: relative;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.contact-bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.contact-hero-text {
+  color: #fff;
+  z-index: 1;
+}
+
+.contact-hero-text h1 {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.contact-hero-text p {
+  font-size: 18px;
+}
+
+.contact-form-section {
+  padding: 60px 20px;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .contact-form {
-  max-width: 700px;
-  margin: 20px auto;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 .contact-form input,
@@ -30,18 +61,50 @@
   padding: 12px;
   border-radius: 6px;
   border: none;
-  background: #0c7bff;
+  background-color: #0c7bff;
   color: #fff;
-  font-size: 16px;
   cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s;
 }
 
 .contact-form button:hover {
-  background: #0056b3;
+  background-color: #065abf;
 }
 
 .status {
-  margin-top: 15px;
-  font-size: 16px;
+  margin-top: 20px;
+  font-weight: bold;
   color: green;
+}
+
+.office-info {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 60px 20px;
+  flex-wrap: wrap;
+}
+
+.office-card {
+  background: #fff;
+  padding: 30px 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.office-card img {
+  width: 50px;
+  margin-bottom: 12px;
+}
+
+.office-card h3 {
+  color: #0c7bff;
+  margin-bottom: 6px;
+}
+
+.office-card p {
+  color: #555;
+  font-size: 15px;
 }

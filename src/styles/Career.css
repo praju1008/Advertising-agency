@@ -1,25 +1,68 @@
 .career-page {
-  font-family: Arial, sans-serif;
-  padding: 50px;
+  padding: 60px 20px;
+  text-align: center;
+  background: #f9f9f9;
+}
+
+.career-hero {
+  position: relative;
   text-align: center;
 }
 
-.career-page h1 {
-  font-size: 36px;
-  color: #1c1c1c;
-  margin-bottom: 20px;
+.career-hero-img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
 }
 
-.career-page p {
-  font-size: 18px;
+.career-hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-align: center;
+}
+
+.job-listings {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.job-card {
+  background: #fff;
+  padding: 25px 20px;
+  border-radius: 12px;
+  width: 280px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+  text-align: left;
+}
+
+.job-card:hover {
+  transform: translateY(-10px);
+}
+
+.job-icon {
+  width: 50px;
+  margin-bottom: 15px;
+}
+
+.job-card h3 {
+  font-size: 20px;
+  margin-bottom: 6px;
+  color: #0c7bff;
+}
+
+.job-card .location {
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.job-card .description {
   color: #555;
-}
-
-.career-page a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.career-page a:hover {
-  text-decoration: underline;
+  font-size: 15px;
 }

@@ -13,7 +13,7 @@ const Home = () => {
 
   return (
     <div className="home-page">
-      {/* Hero Section with Video Background */}
+      {/* Hero Section */}
       <section className="hero">
         <video className="hero-video" autoPlay loop muted>
           <source src="/assets/videos/hero-bg.mp4" type="video/mp4" />
@@ -21,7 +21,9 @@ const Home = () => {
         </video>
         <div className="hero-inner" data-aos="fade-up">
           <h1>Creativity. Passion. Experience.</h1>
-          <p>We are one of the leading & fastest growing advertising agencies in Pune creating engaging content.</p>
+          <p>
+            We are one of the leading & fastest growing advertising agencies in Pune creating engaging content.
+          </p>
           <a href="/contact" className="cta">Let's Talk</a>
         </div>
       </section>
@@ -29,7 +31,9 @@ const Home = () => {
       {/* About Preview */}
       <section className="about-preview" data-aos="fade-up">
         <h2>About Naval</h2>
-        <p>We are one of the leading & fastest growing advertising agencies in Pune, delivering creative advertising solutions that engage and inspire.</p>
+        <p>
+          We are one of the leading & fastest growing advertising agencies in Pune, delivering creative advertising solutions that engage and inspire.
+        </p>
         <a href="/about" className="more">More about us</a>
       </section>
 

@@ -2,9 +2,9 @@ import React from 'react';
 import '../styles/ProjectsGrid.css';
 
 const sampleProjects = [
-  { title: 'Project A', img: '/assets/project-1.jpg' },
-  { title: 'Project B', img: '/assets/project-2.jpg' },
-  { title: 'Project C', img: '/assets/project-3.jpg' },
+  { title: 'Project A', img: '/assets/images/Print.jpg' },
+  { title: 'Project B', img: '/assets/images/Print.jpg' },
+  { title: 'Project C', img: '/assets/images/Print.jpg' },
 ];
 
 const ProjectsGrid = () => (

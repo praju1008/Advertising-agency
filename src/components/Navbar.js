@@ -1,38 +1,55 @@
 import React, { useState, useEffect } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import '../styles/Navbar.css';
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
-  // Add shadow on scroll
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => {
+      if (window.scrollY > 50) setScrolled(true);
+      else setScrolled(false);
+    };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+
   return (
-    <header className={`navbar-container ${scrolled ? 'scrolled' : ''}`}>
-      <div className="navbar-logo">
-        <Link to="/">Naval Publicity</Link>
-      </div>
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+      <div className="navbar-container">
+        <Link to="/" className="logo">
+          <img src="/assets/images/logo.png" alt="Naval Logo" />
+        </Link>
 
-      <nav className={`navbar-links ${isOpen ? 'active' : ''}`}>
-        <NavLink to="/" exact="true" activeclassname="active" onClick={() => setIsOpen(false)}>Home</NavLink>
-        <NavLink to="/about" activeclassname="active" onClick={() => setIsOpen(false)}>About</NavLink>
-        <NavLink to="/services" activeclassname="active" onClick={() => setIsOpen(false)}>Services</NavLink>
-        <NavLink to="/career" activeclassname="active" onClick={() => setIsOpen(false)}>Career</NavLink>
-        <NavLink to="/contact" activeclassname="active" onClick={() => setIsOpen(false)}>Contact</NavLink>
-      </nav>
+        <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
+          <li className={location.pathname === '/' ? 'active' : ''}>
+            <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
+          </li>
+          <li className={location.pathname === '/about' ? 'active' : ''}>
+            <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
+          </li>
+          <li className={location.pathname === '/services' ? 'active' : ''}>
+            <Link to="/services" onClick={() => setMenuOpen(false)}>Services</Link>
+          </li>
+          <li className={location.pathname === '/career' ? 'active' : ''}>
+            <Link to="/career" onClick={() => setMenuOpen(false)}>Career</Link>
+          </li>
+          <li className={location.pathname === '/contact' ? 'active' : ''}>
+            <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
+          </li>
+        </ul>
 
-      <div className={`navbar-toggle ${isOpen ? 'open' : ''}`} onClick={() => setIsOpen(!isOpen)}>
-        <span className="bar"></span>
-        <span className="bar"></span>
-        <span className="bar"></span>
+        <div className={`hamburger ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
-    </header>
+    </nav>
   );
 };
 

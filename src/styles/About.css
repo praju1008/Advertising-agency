@@ -1,34 +1,124 @@
+/* Import Poppins Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* About Page */
 .about-page {
-  font-family: Arial, sans-serif;
-  padding: 50px;
-  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  padding: 0 20px;
+  background-size: cover;
+  background-position: center;
 }
 
+/* Hero Section */
 .about-hero {
-  margin-bottom: 50px;
+  text-align: center;
+  padding: 120px 20px 80px 20px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
 }
 
 .about-hero h1 {
-  font-size: 36px;
-  color: #1c1c1c;
+  font-size: 48px;
+  font-weight: 700;
   margin-bottom: 20px;
 }
 
 .about-hero p {
   font-size: 18px;
-  color: #555;
+  max-width: 700px;
+  margin: 0 auto 20px auto;
 }
 
+.about-hero-img {
+  margin-top: 40px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Stats Section */
 .about-stats {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   gap: 40px;
+  margin: 80px 0;
   flex-wrap: wrap;
-  margin-top: 30px;
 }
 
 .stat {
-  font-size: 20px;
-  font-weight: bold;
-  color: #007bff;
+  text-align: center;
+  flex: 1 1 200px;
+  color: #111;
+}
+
+.stat img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 12px;
+}
+
+.stat h3 {
+  font-size: 32px;
+  margin: 8px 0;
+  font-weight: 600;
+}
+
+.stat p {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* Gallery Section */
+.about-gallery {
+  margin-bottom: 100px;
+  text-align: center;
+  color: #111;
+}
+
+.about-gallery h2 {
+  font-size: 36px;
+  margin-bottom: 40px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+}
+
+/* AOS Animations */
+[data-aos] {
+  transition-property: transform, opacity;
+}
+
+/* Responsive */
+@media screen and (max-width: 1024px) {
+  .about-hero h1 {
+    font-size: 42px;
+  }
+  .about-hero p {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .about-hero h1 {
+    font-size: 36px;
+  }
+  .about-stats {
+    flex-direction: column;
+    align-items: center;
+  }
 }

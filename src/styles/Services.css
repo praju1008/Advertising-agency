@@ -1,18 +1,68 @@
+/* Import Poppins Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Services Page */
 .services-page {
-  font-family: Arial, sans-serif;
-  padding: 50px 20px;
+  font-family: 'Poppins', sans-serif;
+  padding: 80px 20px;
   text-align: center;
+  background-color: #f8f8f8;
 }
 
-.services-page h1 {
+.services-title {
   font-size: 36px;
-  color: #1c1c1c;
+  margin-bottom: 50px;
+  color: #111;
 }
 
-.services-page .services-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+/* Services Grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
-  margin-top: 30px;
+  justify-items: center;
+}
+
+/* Service Card */
+.service-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 30px 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.service-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+}
+
+.service-card h3 {
+  font-size: 24px;
+  margin-bottom: 12px;
+  color: #0c7bff;
+}
+
+.service-card p {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .services-title {
+    font-size: 28px;
+  }
+  .service-card h3 {
+    font-size: 20px;
+  }
+  .service-card p {
+    font-size: 14px;
+  }
 }

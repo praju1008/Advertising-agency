@@ -1,76 +1,96 @@
 .site-footer {
   background: #111;
   color: #fff;
-  padding: 60px 20px 20px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  padding-top: 60px;
 }
 
-.footer-container {
+.footer-top {
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
+  justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
-  justify-content: space-between;
+  gap: 40px;
+  padding: 0 20px;
 }
 
-.footer-column h4 {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
+.footer-left {
+  flex: 1 1 300px;
+}
+
+.footer-left .footer-logo {
+  height: 50px;
   margin-bottom: 15px;
 }
 
-.footer-column p, .footer-column ul {
+.footer-left p {
+  font-size: 14px;
+  line-height: 1.8;
   margin: 0;
-  line-height: 1.6;
 }
 
-.footer-column ul {
+.footer-center,
+.footer-right {
+  flex: 1 1 200px;
+}
+
+.footer-center h4,
+.footer-right h4 {
+  margin-bottom: 12px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.footer-center ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
-.footer-column ul li {
+.footer-center ul li {
   margin-bottom: 8px;
 }
 
-.footer-column ul li a {
-  color: #fff;
+.footer-center ul li a {
   text-decoration: none;
-  transition: 0.3s;
+  color: #fff;
+  transition: color 0.3s;
 }
 
-.footer-column ul li a:hover {
+.footer-center ul li a:hover {
   color: #0c7bff;
 }
 
-.social-links li {
-  display: inline-block;
-  margin-right: 15px;
-}
-
-.social-links li a {
-  font-weight: 500;
-}
-
-.copyright {
-  text-align: center;
-  margin-top: 40px;
+.footer-right p {
   font-size: 14px;
-  border-top: 1px solid #222;
-  padding-top: 18px;
-  font-family: 'Open Sans', sans-serif;
+  margin: 5px 0;
+}
+
+.social-links {
+  margin-top: 12px;
+  display: flex;
+  gap: 12px;
+}
+
+.social-links a img {
+  width: 24px;
+  height: 24px;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 18px 0;
+  background: #0b0b0b;
+  font-size: 14px;
+  margin-top: 40px;
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-  .footer-container {
+@media screen and (max-width: 768px) {
+  .footer-top {
     flex-direction: column;
-    gap: 30px;
-    align-items: center;
-  }
-
-  .social-links li {
-    margin-right: 10px;
+    align-items: flex-start;
+    gap: 20px;
   }
 }
