@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="footer-left">
           <img src="/assets/images/logo.png" alt="Naval Logo" className="footer-logo" />
           <p>
-            We are one of the leading & fastest growing advertising agencies in Pune
+            We are one of the leading & fastest growing advertising agencies in Vijayapur
             creating engaging content and innovative solutions.
           </p>
         </div>
@@ -18,9 +18,9 @@ const Footer = () => {
         </div>
         <div className="footer-right">
           <h4>Contact Us</h4>
-          <p>Email: letstalk@naval.in</p>
-          <p>Phone: +91 12345 67890</p>
-          <p>Address: Pune, India</p>
+          <p>Email: tpadvtvjp@gmail.com</p>
+          <p>Phone: +91 9844642266</p>
+          <p>Address: Vijayapur,Karanataka India</p>
           
         </div>
       </div>

@@ -9,44 +9,48 @@ const About = () => {
   }, []);
 
   return (
-    <div className="about-page" style={{ backgroundImage: "url('/assets/images/counter.jpg')" }}>
-      {/* Hero Section */}
-      <section className="about-hero" data-aos="fade-up">
-        <h1>About Naval</h1>
+    <div className="about-page">
+      {/* Hero Section with Background */}
+      <section className="about-hero">
+        <div className="about-hero-overlay"></div>
+        <div className="about-hero-content">
+          <h1>ABOUT US</h1>
+        </div>
+      </section>
+
+      {/* About Content Section */}
+      <section className="about-content" data-aos="fade-up">
+        <h2>About <span className="highlight">Us</span></h2>
         <p>
-          We are one of the leading & fastest growing advertising agencies in Pune,
-          creating engaging content and innovative solutions for our clients.
+          We are one of the leading & fastest growing advertising agencies in Pune creating engaging content for services that we provide in print and electronic media.
         </p>
-        <img src="/assets/images/bluesmall.jpg" alt="About Hero" className="about-hero-img" />
+        <p>
+          Our mission is to generate leads for your product or service. We also have an adept designing team to satisfy your needs.
+        </p>
+        <p>
+          Our team is dedicated to creating, planning and handling advertising and other forms of promotions and marketing for its clients.
+        </p>
+        <p>
+          We consciously provide services to the clients which are crafted by domain experts who really work hard to make your experience worthwhile.
+        </p>
+        <p>
+          "Creativity with strategy is called advertising". Reach out to us today and make your product or service stand out in market.
+        </p>
       </section>
 
-      {/* Stats Section */}
-      <section className="about-stats" data-aos="fade-up">
-        <div className="stat">
-          <img src="/assets/images/experience-icon.png" alt="Experience" />
-          <h3>18+</h3>
-          <p>Years of Experience</p>
-        </div>
-        <div className="stat">
-          <img src="/assets/images/clients-icon.png" alt="Clients" />
-          <h3>300+</h3>
-          <p>Clients</p>
-        </div>
-        <div className="stat">
-          <img src="/assets/images/ads-icon.png" alt="Ads Published" />
-          <h3>10000</h3>
-          <p>Ads Published</p>
-        </div>
-      </section>
-
-      {/* Gallery Section */}
-      <section className="about-gallery" data-aos="fade-up">
-        <h2>Our Work</h2>
-        <div className="gallery-grid">
-          <img src="/assets/images/work1.jpg" alt="Work 1" />
-          <img src="/assets/images/work2.jpg" alt="Work 2" />
-          <img src="/assets/images/work3.jpg" alt="Work 3" />
-          <img src="/assets/images/work4.jpg" alt="Work 4" />
+      {/* Meet The Team Section */}
+      <section className="team-section" data-aos="fade-up">
+        <h2>Meet <span className="highlight">The Team</span></h2>
+        <div className="team-grid">
+          <div className="team-member">
+            <img src="/assets/images/team1.jpg" alt="Team Member" />
+          </div>
+          <div className="team-member">
+            <img src="/assets/images/team2.jpg" alt="Team Member" />
+          </div>
+          <div className="team-member">
+            <img src="/assets/images/team3.jpg" alt="Team Member" />
+          </div>
         </div>
       </section>
     </div>

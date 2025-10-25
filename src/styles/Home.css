@@ -1,10 +1,17 @@
-/* Import Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700&display=swap');
 
-/* Global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
 .home-page {
-  font-family: 'Poppins', Arial, sans-serif;
-  color: #111;
+  font-family: 'Raleway', sans-serif;
 }
 
 /* Hero Section */
@@ -14,7 +21,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   overflow: hidden;
+  background: #000;
 }
 
 .hero-video {
@@ -24,152 +33,383 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1;
+  z-index: 0;
 }
 
-.hero-inner {
-  text-align: center;
-  color: #fff;
-  max-width: 700px;
+.hero-video-fallback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #6B4FBB 0%, #4A148C 100%);
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
   z-index: 1;
 }
 
-.hero-inner h1 {
-  font-size: 48px;
-  margin-bottom: 20px;
-  font-weight: 700;
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.hero-inner p {
-  font-size: 18px;
-  margin-bottom: 30px;
-  font-weight: 400;
+.hero-content h1 {
+  margin-bottom: 40px;
 }
 
-.hero-inner .cta {
-  padding: 12px 30px;
-  background: #0c7bff;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: 500;
-  transition: 0.3s;
-}
-
-.hero-inner .cta:hover {
-  background: #0056b3;
-}
-
-/* About Preview Section */
-.about-preview {
-  padding: 80px 20px;
+.cd-words-wrapper {
+  display: block;
   text-align: center;
-  background: #f8f8f8;
+}
+
+.cd-words-wrapper b {
+  display: block;
+  font-size: 80px;
+  font-weight: 100;
+  letter-spacing: 20px;
+  color: #fff;
+  line-height: 1.2;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  transform: scale(0.8);
+  animation: zoomFadeIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.cd-words-wrapper b:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.cd-words-wrapper b:nth-child(2) {
+  animation-delay: 0.6s;
+}
+
+.cd-words-wrapper b:nth-child(3) {
+  animation-delay: 1s;
+}
+
+@keyframes zoomFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hero-content p {
+  font-size: 18px;
+  font-weight: 300;
+  color: #fff;
+  max-width: 700px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+  letter-spacing: 0.5px;
+}
+
+.hero-content .cta {
+  display: inline-block;
+  padding: 15px 40px;
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.hero-content .cta:hover {
+  background: #fff;
+  color: #333;
+}
+
+/* About Preview Section - DARK WOOD BACKGROUND WITH WHITE TEXT */
+.about-preview {
+  padding: 120px 40px;
+  text-align: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+              url(../../public/assets/images/counter.jpg) no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  color: #fff;
+}
+
+.about-preview-content {
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .about-preview h2 {
-  font-size: 36px;
-  margin-bottom: 20px;
+  font-size: 48px;
+  font-weight: 300;
+  color: #fff;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.about-preview h2 .highlight {
+  color: #fff;
   font-weight: 600;
 }
 
 .about-preview p {
   font-size: 16px;
-  max-width: 700px;
-  margin: 0 auto 20px auto;
-  line-height: 1.8;
   font-weight: 400;
+  color: #fff;
+  line-height: 1.8;
+  margin: 0 auto 20px;
+  max-width: 850px;
+  text-align: center;
 }
 
-.about-preview .more {
-  color: #0c7bff;
+.about-btn {
+  display: inline-block;
+  padding: 14px 38px;
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  margin-top: 20px;
 }
 
-.about-preview .more:hover {
-  text-decoration: underline;
+.about-btn:hover {
+  background: #fff;
+  color: #333;
 }
 
-/* Stats Section */
+/* Services Section - WHITE BACKGROUND */
+.services-section {
+  padding: 100px 40px;
+  text-align: center;
+  background: #fff;
+}
+
+.services-section h2 {
+  font-size: 48px;
+  font-weight: 300;
+  color: #999;
+  margin-bottom: 40px;
+}
+
+/* Stats Section - DARK WOOD/TABLE BACKGROUND */
 .stats {
   display: flex;
   justify-content: center;
-  gap: 50px;
-  padding: 60px 20px;
-  background: #111;
+  align-items: center;
+  gap: 120px;
+  padding: 100px 40px;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+              url(../../public/assets/images/counter.jpg) no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
   color: #fff;
+  flex-wrap: wrap;
 }
 
 .stats .stat {
   text-align: center;
+  min-width: 200px;
 }
 
 .stats .stat h3 {
-  font-size: 36px;
-  margin-bottom: 10px;
-  font-weight: 600;
+  font-size: 55px;
+  margin-bottom: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #fff;
 }
 
 .stats .stat p {
-  font-size: 16px;
+  font-size: 15px;
+  text-transform: uppercase;
   font-weight: 400;
+  letter-spacing: 2px;
+  color: #fff;
 }
 
-/* Services Section */
-.services-section {
-  padding: 60px 20px;
-  text-align: center;
-}
-
-.services-section h2 {
-  font-size: 36px;
-  margin-bottom: 40px;
-  font-weight: 600;
-}
-
-/* Projects Section */
+/* Projects Section - BLACK BACKGROUND WITH OVERLAY CARDS */
 .projects-section {
-  padding: 60px 20px;
+  padding: 0;
   text-align: center;
+  background: #000;
+  color: #fff;
 }
 
-.projects-section h2 {
-  font-size: 36px;
-  margin-bottom: 40px;
+.projects-header {
+  padding: 80px 40px 60px;
+  background: #000;
+}
+
+.projects-header h2 {
+  font-size: 48px;
+  font-weight: 300;
+  color: #999;
+  margin-bottom: 20px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.projects-header h2 .highlight {
+  color: #fff;
   font-weight: 600;
 }
 
-/* Testimonials Section */
+.projects-header p {
+  font-size: 16px;
+  color: #ccc;
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.8;
+  font-family: 'Raleway', sans-serif;
+}
+
+/* Testimonials Section - FIXED BACKGROUND */
 .testimonials-section {
-  padding: 60px 20px;
+  padding: 100px 40px;
   text-align: center;
+  background: linear-gradient(rgba(50, 60, 80, 0.7), rgba(50, 60, 80, 0.7)),
+              url(../../public/assets/images/testimonials.jpg) no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  color: #333;
 }
 
 .testimonials-section h2 {
-  font-size: 36px;
-  margin-bottom: 40px;
-  font-weight: 600;
+  font-size: 40px;
+  margin-bottom: 50px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
-/* Responsive */
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Responsive Design */
 @media screen and (max-width: 1024px) {
-  .hero-inner h1 {
-    font-size: 36px;
+  .cd-words-wrapper b {
+    font-size: 70px;
+    letter-spacing: 15px;
   }
-  
-  .hero-inner p {
+
+  .hero-content p {
     font-size: 16px;
   }
 
-  .about-preview h2 {
-    font-size: 28px;
+  .about-preview h2,
+  .services-section h2,
+  .projects-header h2,
+  .testimonials-section h2 {
+    font-size: 36px;
+  }
+
+  .stats {
+    gap: 80px;
+  }
+
+  .stats .stat h3 {
+    font-size: 48px;
   }
 }
 
 @media screen and (max-width: 768px) {
+  .hero {
+    height: 100vh;
+  }
+
+  .cd-words-wrapper b {
+    font-size: 50px;
+    letter-spacing: 10px;
+  }
+
+  .hero-content p {
+    font-size: 15px;
+  }
+
+  .hero-content .cta {
+    padding: 12px 28px;
+    font-size: 11px;
+  }
+
+  .about-preview,
+  .services-section,
+  .stats,
+  .testimonials-section {
+    padding: 70px 30px;
+    background-attachment: scroll;
+  }
+
+  .projects-header {
+    padding: 60px 30px 40px;
+  }
+
+  .about-preview h2,
+  .services-section h2,
+  .projects-header h2,
+  .testimonials-section h2 {
+    font-size: 30px;
+  }
+
+  .about-preview p {
+    font-size: 14px;
+  }
+
   .stats {
     flex-direction: column;
-    gap: 30px;
+    gap: 50px;
+  }
+
+  .stats .stat h3 {
+    font-size: 42px;
+  }
+
+  .about-btn {
+    padding: 11px 28px;
+    font-size: 11px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .cd-words-wrapper b {
+    font-size: 36px;
+    letter-spacing: 8px;
+  }
+
+  .hero-content p {
+    font-size: 14px;
+  }
+
+  .about-preview h2,
+  .services-section h2,
+  .projects-header h2,
+  .testimonials-section h2 {
+    font-size: 26px;
+  }
+
+  .stats .stat h3 {
+    font-size: 38px;
   }
 }
