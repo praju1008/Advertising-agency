@@ -9,8 +9,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) setScrolled(true);
-      else setScrolled(false);
+      setScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -24,7 +23,6 @@ const Navbar = () => {
         <Link to="/" className="logo">
           <img src="/assets/images/logo.png" alt="Naval Logo" />
         </Link>
-
         <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
           <li className={location.pathname === '/' ? 'active' : ''}>
             <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
@@ -41,9 +39,22 @@ const Navbar = () => {
           <li className={location.pathname === '/contact' ? 'active' : ''}>
             <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
           </li>
+          {/* Admin Button */}
+          <li>
+            <Link
+              to="/admin"
+              className="admin-nav-btn"
+              onClick={() => setMenuOpen(false)}
+              aria-label="Admin Panel"
+            >
+              <i className="fas fa-user-shield"></i> Admin
+            </Link>
+          </li>
         </ul>
-
-        <div className={`hamburger ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
+        <div
+          className={`hamburger ${menuOpen ? 'open' : ''}`}
+          onClick={toggleMenu}
+        >
           <span></span>
           <span></span>
           <span></span>

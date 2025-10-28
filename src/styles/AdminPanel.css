@@ -1,0 +1,160 @@
+.admin-hero-section {
+  position: relative;
+  width: 100vw;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom-left-radius: 32px;
+  border-bottom-right-radius: 32px;
+  margin-bottom: 36px;
+  z-index: 1;
+}
+.admin-hero-bg-video {
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+.admin-hero-overlay {
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(28,28,32,0.53);
+  z-index: 2;
+}
+.admin-hero-text {
+  position: relative;
+  z-index: 3;
+  color: #ffe272;
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+}
+.admin-hero-text h1 {
+  font-size: 38px;
+  font-weight: 900;
+  margin-bottom: 10px;
+  letter-spacing: 1.3px;
+}
+.admin-hero-text p {
+  font-size: 20px;
+  font-weight: 400;
+}
+.admin-panel-wrapper {
+  max-width: 1200px;
+  margin: 48px auto;
+  background: #f8f8f8;
+  padding: 22px 18px;
+  border-radius: 8px;
+  box-shadow: 0 2px 14px rgba(30,30,40,0.10);
+}
+.admin-panel-wrapper h2 {
+  font-family: Raleway,sans-serif;
+  margin-bottom: 17px;
+  color: #222;
+}
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Raleway,sans-serif;
+  font-size: 15px;
+  background: #fff;
+}
+.admin-table th, .admin-table td {
+  padding: 11px 10px;
+  border: 1px solid #eaeaea;
+}
+.admin-table th {
+  background: #ffe272;
+  color: #222;
+  font-weight: 600;
+}
+.admin-delete-btn {
+  color: #fff;
+  background: #db5050;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+.admin-delete-btn:hover {
+  background: #a73030;
+}
+@media (max-width:700px) {
+  .admin-table, .admin-table th, .admin-table td { font-size: 11.5px; }
+  .admin-panel-wrapper { padding: 6px 1vw; }
+}
+.admin-form {
+  display: flex;
+  gap: 11px;
+  margin-bottom: 14px;
+  background: #fffbe5;
+  padding: 13px;
+  border-radius: 7px;
+  box-shadow: 0 1px 6px 0 rgba(150,140,0,.08);
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+.admin-form input {
+  font-family: Raleway, sans-serif;
+  font-size: 15px;
+  padding: 8px 12px;
+  border: 1px solid #e9e9e9;
+  border-radius: 4px;
+  background: #faf4df;
+  color: #111;
+  margin-right: 8px;
+}
+.admin-form button {
+  background: #ffe272;
+  color: #18171b;
+  font-weight: 700;
+  border: none;
+  border-radius: 4px;
+  padding: 9px 18px;
+  margin-right: 8px;
+  cursor: pointer;
+  transition: background 0.19s;
+  font-family: Raleway, sans-serif;
+}
+
+.admin-form button[type="button"] {
+  background: #dedede;
+  color: #5a5a5a;
+  font-weight: 700;
+}
+
+.admin-form button:hover {
+  background: #ffec84;
+}
+
+.admin-edit-btn {
+  background: #5688f7;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  margin-right: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background .17s;
+}
+.admin-edit-btn:hover { background: #2363cf; }
+.admin-delete-btn {
+  background: #db5050;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background .17s;
+}
+.admin-delete-btn:hover { background: #a73030; }

@@ -22,7 +22,7 @@ const About = () => {
       <section className="about-content" data-aos="fade-up">
         <h2>About <span className="highlight">Us</span></h2>
         <p>
-          We are one of the leading & fastest growing advertising agencies in Pune creating engaging content for services that we provide in print and electronic media.
+          We are one of the leading & fastest growing advertising agencies in Vijayapur creating engaging content for services that we provide in print and electronic media.
         </p>
         <p>
           Our mission is to generate leads for your product or service. We also have an adept designing team to satisfy your needs.

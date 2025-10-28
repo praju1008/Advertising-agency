@@ -1,26 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ServicesGrid from '../components/ServicesGrid';
 import ProjectsGrid from '../components/ProjectsGrid';
 import Testimonials from '../components/Testimonials';
 import '../styles/Home.css';
 
+const HERO_WORDS = ['CREATIVITY', 'PASSION', 'EXPERIENCE'];
+
 const Home = () => {
   const [videoError, setVideoError] = useState(false);
+  const [heroIndex, setHeroIndex] = useState(0);
 
-  const handleVideoError = () => {
-    setVideoError(true);
-  };
+  useEffect(() => {
+    const timer = setTimeout(
+      () => setHeroIndex((prev) => (prev + 1) % HERO_WORDS.length),
+      2200
+    );
+    return () => clearTimeout(timer);
+  }, [heroIndex]);
+
+  const handleVideoError = () => setVideoError(true);
 
   return (
     <div className="home-page">
       {/* Hero Section */}
       <section className="hero">
         {!videoError ? (
-          <video 
-            className="hero-video" 
-            autoPlay 
-            loop 
-            muted 
+          <video
+            className="hero-video"
+            autoPlay
+            loop
+            muted
             playsInline
             onError={handleVideoError}
           >
@@ -33,39 +42,71 @@ const Home = () => {
         <div className="hero-content">
           <h1>
             <span className="cd-words-wrapper">
-              <b>CREATIVITY</b>
-              <b>PASSION</b>
-              <b>EXPERIENCE</b>
+              {HERO_WORDS.map((word, i) => {
+                const prevIndex = heroIndex === 0 ? HERO_WORDS.length - 1 : heroIndex - 1;
+                let cls = "";
+                if (i === heroIndex) cls = "is-slide-visible";
+                else if (i === prevIndex) cls = "is-slide-leave";
+                return <b key={word} className={cls}>{word}</b>
+              })}
             </span>
           </h1>
-          <p>
-            We are one of the leading & fastest growing advertising agencies in Pune creating engaging content.
-          </p>
-          <a href="/contact" className="cta">LET'S TALK</a>
         </div>
       </section>
 
       {/* About Preview */}
-      <section className="about-preview">
+      <section
+        className="about-preview"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(/assets/images/counter.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}
+      >
         <div className="about-preview-content">
-          <h2>About Thimashetti</h2>
+          <h2>About <span className="highlight">Thimashetti</span></h2>
           <p>
-            We are one of the leading & fastest growing advertising agencies in Vijayapur, delivering creative advertising solutions that engage and inspire.
+            We are one of the leading & fastest growing advertising agencies in Vijayapur creating engaging content for services that we provide in print and electronic media.
+          </p>
+          <p>
+            Our mission is to generate leads for your product or service. We also have an adept designing team to satisfy your needs.
+          </p>
+          <p>
+            Our team is dedicated to creating, planning and handling advertising and other forms of promotions and marketing for its clients.
+          </p>
+          <p>
+            We consciously provide services to the clients which are crafted by domain experts who really work hard to make your experience worthwhile.
+          </p>
+          <p>
+            "Creativity with strategy is called advertising". Reach out to us today and make your product or service stand out in market.
           </p>
           <a href="/about" className="about-btn">MORE ABOUT US</a>
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* What We Do Section */}
       <section className="services-section">
-        <h2>We Do</h2>
+        <h2>
+          What <span className="bold_header">We Do</span>
+        </h2>
         <ServicesGrid />
       </section>
 
       {/* Stats Section */}
-      <section className="stats">
+      <section
+        className="stats"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(/assets/images/counter.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}
+      >
         <div className="stat">
-          <h3 className="counter">20+</h3>
+          <h3 className="counter">30+</h3>
           <p>Years of Experience</p>
         </div>
         <div className="stat">
@@ -82,14 +123,15 @@ const Home = () => {
       <section className="projects-section">
         <div className="projects-header">
           <h2>Our <span className="highlight">Projects</span></h2>
-          <p>we build exceptional digital experiences that influence consumer decisions, motivate engagement and foster sharing.</p>
+          <p>
+            We build exceptional digital experiences that influence consumer decisions, motivate engagement and foster sharing.
+          </p>
         </div>
         <ProjectsGrid />
       </section>
 
       {/* Testimonials Section */}
-      <section className="testimonials-section">
-        <h2>What Clients Say</h2>
+      <section className="testimonials-section" style={{ background: '#27213c' }}>
         <Testimonials />
       </section>
     </div>

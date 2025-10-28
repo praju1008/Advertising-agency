@@ -92,3 +92,30 @@
     transform: translateX(0);
   }
 }
+ .admin-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #232129;
+  font-weight: 700;
+  letter-spacing: .6px;
+  font-size: 17px;
+  padding: 8px 21px;
+  border-radius: 24px;
+  border: none;
+  text-decoration: none;
+  margin-left: 14px;
+  box-shadow: 0 2px 8px rgba(34,34,34,0.09);
+  transition: background 0.23s, color 0.18s;
+}
+.admin-nav-btn:hover,
+.admin-nav-btn:focus,
+.active .admin-nav-btn {
+  /* background: linear-gradient(90deg,#ffed92 0%,#ffe272 100%); */
+  color: #18171b;
+  /* text-decoration: underline; */
+}
+.admin-nav-btn i {
+  font-size: 18px;
+  margin-right: 6px;
+}

@@ -1,74 +1,39 @@
 import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay } from 'swiper/modules';
-import 'swiper/css';
 import '../styles/Testimonials.css';
 
-const logos = [
-  'assets/images/Logo-1-min.jpg',
-  'assets/images/Logo-2-min.jpg',
-  'assets/images/Logo-3-min.jpg',
-  'assets/images/Logo-4-min.jpg',
-  'assets/images/Logo-5-min.jpg',
-  'assets/images/Logo-6-min.jpg',
-  'assets/images/Logo-7-min.jpg',
-];
-
-const testimonials = [
-  { text: 'Consummate professionals...', author: 'Sachin Agarwal' },
-  { text: 'We could not have been more pleased...', author: 'Mehul Shah' },
-  { text: 'The professionalism and personalized service...', author: 'Atul' },
-  { text: 'Their creativity and attention to detail...', author: 'Ravi Kumar' },
-  { text: 'A fantastic experience from start to finish...', author: 'Anjali Verma' },
-  { text: 'They took our vision and turned it into reality...', author: 'Atul' },
-  { text: 'Their innovative approach helped us stand out...', author: 'Priya Singh' },
-];
-
-const Testimonials = () => (
-  <section className="testimonials" data-aos="fade-up">
-    <h2>Testimonials</h2>
-
-    {/* Logos carousel */}
-    <Swiper
-      spaceBetween={30}
-      slidesPerView={5}
-      loop
-      autoplay={{ delay: 2500, disableOnInteraction: false }}
-      modules={[Autoplay]}
-      className="testimonial-logos"
-      breakpoints={{
-        320: { slidesPerView: 2 },
-        640: { slidesPerView: 3 },
-        768: { slidesPerView: 4 },
-        1024: { slidesPerView: 5 },
-      }}
-    >
-      {logos.map((logo, i) => (
-        <SwiperSlide key={i}>
-          <img src={logo} alt={`Client ${i + 1}`} className="testimonial-logo" />
-        </SwiperSlide>
-      ))}
-    </Swiper>
-
-    {/* Text carousel */}
-    <Swiper
-      spaceBetween={20}
-      slidesPerView={1}
-      loop
-      autoplay={{ delay: 4000, disableOnInteraction: false }}
-      modules={[Autoplay]}
-      className="testimonial-texts"
-    >
-      {testimonials.map((t, i) => (
-        <SwiperSlide key={i}>
-          <blockquote>
-            <p>{t.text}</p>
-            <footer>— {t.author}</footer>
-          </blockquote>
-        </SwiperSlide>
-      ))}
-    </Swiper>
-  </section>
-);
+const Testimonials = () => {
+  return (
+    <div className="testimonials-demo-section">
+      <div className="testimonials-center">
+        <div className="testimonials-blockquote">
+          <p>
+            Consummate professionals that are highly knowledgeable and well skilled. We highly recommend Naval Publicity to anyone looking for a great company to work with.
+          </p>
+          <div className="quote-demo-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M10 9V15C10 16.1 9.1 17 8 17H4C2.9 17 2 16.1 2 15V11C2 7.69 4.69 5 8 5H9V7H8C5.79 7 4 8.79 4 11H8C9.1 11 10 11.9 10 13V15ZM22 9V15C22 16.1 21.1 17 20 17H16C14.9 17 14 16.1 14 15V11C14 7.69 16.69 5 20 5H21V7H20C17.79 7 16 8.79 16 11H20C21.1 11 22 11.9 22 13V15Z" fill="#fff"/></svg>
+          </div>
+          <div className="testimonials-author-demo">Sachin Agarwal</div>
+        </div>
+        <div className="client-logos-demo">
+          <div className="logo-demo-box">
+            <img src="/assets/images/Logo-1-min.jpg" alt="A K Surana" />
+          </div>
+          <div className="logo-demo-box">
+            <img src="/assets/images/Logo-2-min.jpg" alt="Rising Spaces" />
+          </div>
+          <div className="logo-demo-box">
+            <img src="/assets/images/Logo-3-min.jpg" alt="Pragati Construction" />
+          </div>
+          <div className="logo-demo-box">
+            <img src="/assets/images/Logo-4-min.jpg" alt="Horizon Developers" />
+          </div>
+          <div className="logo-demo-box">
+            <img src="/assets/images/Logo-5-min.jpg" alt="Planet Realty" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default Testimonials;
