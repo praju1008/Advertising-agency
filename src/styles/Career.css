@@ -88,3 +88,30 @@
 @media (max-width:390px){
   .career-job-row { padding: 10px 2vw; font-size: 13px;}
 }
+.career-apply-btn {
+  margin-top: 12px;
+  padding: 7px 18px;
+  border-radius: 6px;
+  border: none;
+  background: #1867c0;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.career-apply-btn:hover { background: #103a7a; }
+.apply-modal {
+  position: fixed; left: 0; top: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.45); display: flex; align-items: center; justify-content: center; z-index: 40;
+}
+.apply-modal-content {
+  background: #fff; border-radius: 7px; padding: 30px 26px; min-width: 320px; position: relative; box-shadow: 0 4px 40px 0 #32325d2b;
+}
+.apply-modal-close {
+  position: absolute; top: 8px; right: 15px; font-size: 23px; background: none; border: none; color: #999; cursor: pointer;
+}
+.apply-form input, .apply-form textarea {
+  display: block; margin: 11px 0; padding: 7px 9px; width: 99%; font-size: 16px; border: 1px solid #ccc; border-radius: 4px;
+}
+.apply-form button { margin-top: 9px; }
+.apply-status { margin-top: 10px; color: green; }

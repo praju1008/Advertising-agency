@@ -158,3 +158,18 @@
   transition: background .17s;
 }
 .admin-delete-btn:hover { background: #a73030; }
+body, html {
+  font-family: 'Inter', 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+/* For admin tables and titles */
+.admin-panel-wrapper,
+.admin-table,
+.admin-panel-wrapper h2,
+.admin-table th,
+.admin-table td,
+.admin-hero-text,
+.admin-hero-text h1,
+.admin-hero-text p {
+  font-family: 'Inter', 'Roboto', Arial, Helvetica, sans-serif !important;
+}

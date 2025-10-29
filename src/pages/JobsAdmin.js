@@ -1,27 +1,81 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/AdminPanel.css';
+
 const JobsAdmin = ({ token }) => {
   const [jobs, setJobs] = useState([]);
   const [form, setForm] = useState({ id: null, title: '', description: '' });
   const [editing, setEditing] = useState(false);
 
-  const fetchJobs = () =>
-    axios.get('http://localhost:5000/api/jobs', { headers: {Authorization:'Bearer '+token}})
-      .then(res => setJobs(res.data.data));
+  useEffect(() => {
+    if (!token) return;
+    axios.get('http://localhost:5000/api/jobs', {
+      headers: { Authorization: 'Bearer ' + token }
+    })
+      .then(res => setJobs(res.data.data))
+      .catch(e => {
+        if (e.response && e.response.status === 401) {
+          alert('Session expired, login required!');
+          window.location.reload();
+        }
+      });
+  }, [token]);
 
-  useEffect(() => { fetchJobs(); }, []);
+  const fetchJobs = async () => {
+    if (!token) return;
+    try {
+      const res = await axios.get('http://localhost:5000/api/jobs', {
+        headers: { Authorization: 'Bearer ' + token }
+      });
+      setJobs(res.data.data);
+    } catch (e) {
+      if (e.response && e.response.status === 401) {
+        alert('Session expired, please log in again.');
+        window.location.reload();
+      }
+    }
+  }
 
   const handleSave = async (e) => {
     e.preventDefault();
-    if (editing) {
-      await axios.put(`http://localhost:5000/api/jobs/${form.id}`, { title: form.title, description: form.description }, { headers: {Authorization:'Bearer '+token}});
-    } else {
-      await axios.post('http://localhost:5000/api/jobs', { title: form.title, description: form.description }, {headers:{Authorization:'Bearer '+token}});
+    if (!token) {
+      alert("You are not authenticated! Please login again.");
+      return;
     }
-    setForm({ id: null, title: '', description: '' });
-    setEditing(false);
-    fetchJobs();
+    try {
+      if (editing) {
+        await axios.put(
+          `http://localhost:5000/api/jobs/${form.id}`,
+          { title: form.title, description: form.description },
+          { headers: { Authorization: 'Bearer ' + token } }
+        ).catch(e => {
+          if (e.response && e.response.status === 401) {
+            alert('Session expired, please log in again.');
+            window.location.reload();
+          }
+          throw e;
+        });
+      } else {
+        await axios.post(
+          'http://localhost:5000/api/jobs',
+          { title: form.title, description: form.description },
+          { headers: { Authorization: 'Bearer ' + token } }
+        ).catch(e => {
+          if (e.response && e.response.status === 401) {
+            alert('Session expired, please log in again.');
+            window.location.reload();
+          }
+          throw e;
+        });
+      }
+      setForm({ id: null, title: '', description: '' });
+      setEditing(false);
+      await fetchJobs();
+    } catch (e) {
+      if (!(e.response && e.response.status === 401)) {
+        alert('Failed to update job.');
+      }
+    }
   };
 
   const handleEdit = (job) => {
@@ -30,9 +84,28 @@ const JobsAdmin = ({ token }) => {
   };
 
   const handleDelete = async (id) => {
+    if (!token) {
+      alert("You are not authenticated! Please login again.");
+      return;
+    }
     if (window.confirm('Delete this job?')) {
-      await axios.delete(`http://localhost:5000/api/jobs/${id}`, { headers: {Authorization:'Bearer '+token}});
-      fetchJobs();
+      try {
+        await axios.delete(
+          `http://localhost:5000/api/jobs/${id}`,
+          { headers: { Authorization: 'Bearer ' + token } }
+        ).catch(e => {
+          if (e.response && e.response.status === 401) {
+            alert('Session expired, please login again.');
+            window.location.reload();
+          }
+          throw e;
+        });
+        await fetchJobs();
+      } catch (e) {
+        if (!(e.response && e.response.status === 401)) {
+          alert('Failed to delete job.');
+        }
+      }
     }
   };
 
@@ -52,7 +125,16 @@ const JobsAdmin = ({ token }) => {
           placeholder="Description"
         />
         <button type="submit">{editing ? "Update" : "Add"} Job</button>
-        {editing && <button type="button" onClick={() => {setEditing(false);setForm({id:null,title:'',description:''});}}>Cancel</button>}
+        {editing && (
+          <button
+            type="button"
+            onClick={() => {
+              setEditing(false);
+              setForm({ id: null, title: '', description: '' });
+            }}>
+            Cancel
+          </button>
+        )}
       </form>
       <table className="admin-table">
         <thead>

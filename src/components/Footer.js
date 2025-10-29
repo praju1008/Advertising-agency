@@ -3,15 +3,15 @@ import axios from 'axios';
 import '../styles/Footer.css';
 
 const Footer = () => {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
   const [status, setStatus] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/contact', form);
+      await axios.post('http://localhost:5000/api/contact', form); // Make sure your backend accepts phone!
       setStatus('Message sent. Thank you!');
-      setForm({ name: '', email: '', message: '' });
+      setForm({ name: '', email: '', phone: '', message: '' });
     } catch (err) {
       setStatus('Error sending message.');
     }
@@ -74,6 +74,16 @@ const Footer = () => {
               required
               value={form.email}
               onChange={e => setForm({ ...form, email: e.target.value })}
+            />
+            <input
+              type="tel"
+              placeholder="Enter your mobile number"
+              name="phone"
+              required
+              value={form.phone}
+              onChange={e => setForm({ ...form, phone: e.target.value })}
+              pattern="[0-9]{10,15}"
+              maxLength={15}
             />
             <textarea
               placeholder="Your Message"

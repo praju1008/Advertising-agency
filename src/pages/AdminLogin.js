@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import '../styles/AdminLogin.css';
 
 const AdminLogin = ({ setToken }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [err, setErr] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -13,6 +15,8 @@ const AdminLogin = ({ setToken }) => {
     try {
       const res = await axios.post('http://localhost:5000/api/admin/login', { username, password });
       setToken(res.data.token);
+      localStorage.setItem('admin_token', res.data.token);
+      navigate('/admin');
     } catch {
       setErr('Wrong credentials.');
     }

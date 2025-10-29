@@ -42,10 +42,10 @@ const Navbar = () => {
           {/* Admin Button */}
           <li>
             <Link
-              to="/admin"
+              to="/admin-login"
               className="admin-nav-btn"
               onClick={() => setMenuOpen(false)}
-              aria-label="Admin Panel"
+              aria-label="Admin Login"
             >
               <i className="fas fa-user-shield"></i> Admin
             </Link>
