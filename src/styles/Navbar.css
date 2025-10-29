@@ -79,13 +79,13 @@
   }
   .nav-links {
     position: absolute;
-    top: 70px;
+    top: 80px;
     right: 0;
-    background: #fff;
+    background: #240808;
     flex-direction: column;
     width: 200px;
     padding: 20px;
-    gap: 20px;
+    gap: 25px;
     transform: translateX(100%);
   }
   .nav-links.open {
@@ -96,7 +96,7 @@
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  color: #232129;
+  color: #d6d2e0;
   font-weight: 700;
   letter-spacing: .6px;
   font-size: 17px;
@@ -111,7 +111,7 @@
 .admin-nav-btn:hover,
 .admin-nav-btn:focus,
 .active .admin-nav-btn {
-  /* background: linear-gradient(90deg,#ffed92 0%,#ffe272 100%); */
+  /* background: linear-gradient(90deg,#b3b1ab 0%,#ffe272 100%); */
   color: #18171b;
   /* text-decoration: underline; */
 }
@@ -119,3 +119,4 @@
   font-size: 18px;
   margin-right: 6px;
 }
+
