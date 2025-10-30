@@ -4,12 +4,9 @@
   "description": "Backend for Naval Publicity clone project using Node.js, Express, and MySQL2",
   "main": "server.js",
   "type": "module",
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
+"scripts": {
+  "start": "node server.js"
+},
   "keywords": [
     "express",
     "mysql2",
