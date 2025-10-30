@@ -4,9 +4,9 @@
   "description": "Backend for Naval Publicity clone project using Node.js, Express, and MySQL2",
   "main": "server.js",
   "type": "module",
-"scripts": {
-  "start": "node server.js"
-},
+  "scripts": {
+    "start": "node server.js"
+  },
   "keywords": [
     "express",
     "mysql2",
@@ -23,8 +23,7 @@
     "mongoose": "^8.19.2",
     "multer": "^2.0.2",
     "mysql2": "^3.15.3",
-    "nodemailer": "^7.0.10",
-    "react-scripts": "^5.0.1"
+    "nodemailer": "^7.0.10"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"
