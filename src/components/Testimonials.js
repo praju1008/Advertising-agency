@@ -16,19 +16,19 @@ const Testimonials = () => {
         </div>
         <div className="client-logos-demo">
           <div className="logo-demo-box">
-            <img src="/assets/images/Logo-1-min.jpg" alt="A K Surana" />
+            <img src="/assets/images/Logo-84.png" alt="Bank" />
           </div>
           <div className="logo-demo-box">
-            <img src="/assets/images/Logo-2-min.jpg" alt="Rising Spaces" />
+            <img src="/assets/images/Logo-85.jpg" alt="Excellent" />
           </div>
           <div className="logo-demo-box">
-            <img src="/assets/images/Logo-3-min.jpg" alt="Pragati Construction" />
+            <img src="/assets/images/Logo-86.png" alt="RNS" />
           </div>
           <div className="logo-demo-box">
-            <img src="/assets/images/Logo-4-min.jpg" alt="Horizon Developers" />
+            <img src="/assets/images/Logo-87.jpeg" alt=" Bijjaragi Motors" />
           </div>
           <div className="logo-demo-box">
-            <img src="/assets/images/Logo-5-min.jpg" alt="Planet Realty" />
+            <img src="/assets/images/Logo-88.png" alt="Planet Realty" />
           </div>
         </div>
       </div>

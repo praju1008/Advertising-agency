@@ -43,13 +43,13 @@ const About = () => {
         <h2>Meet <span className="highlight">The Team</span></h2>
         <div className="team-grid">
           <div className="team-member">
-            <img src="/assets/images/team1.jpg" alt="Team Member" />
+            <img src="/assets/images/pink.jpg" alt="Team Member" />
           </div>
           <div className="team-member">
-            <img src="/assets/images/team2.jpg" alt="Team Member" />
+            <img src="/assets/images/pink.jpg" alt="Team Member" />
           </div>
           <div className="team-member">
-            <img src="/assets/images/team3.jpg" alt="Team Member" />
+            <img src="/assets/images/pink.jpg" alt="Team Member" />
           </div>
         </div>
       </section>
