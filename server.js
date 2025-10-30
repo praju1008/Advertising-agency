@@ -21,7 +21,7 @@ const upload = multer({ storage });
 app.use('/uploads', express.static('uploads'));
 
 const ADMIN_USER = "praju";
-const ADMIN_PASS = "praju@1008";
+const ADMIN_PASS = "praju";
 const JWT_SECRET = "Praju@1008";
 
 // Admin check middleware
