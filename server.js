@@ -20,8 +20,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 app.use('/uploads', express.static('uploads'));
 
-const ADMIN_USER = "admin";
-const ADMIN_PASS = "admin";
+const ADMIN_USER = "praju";
+const ADMIN_PASS = "praju@1008";
 const JWT_SECRET = "Praju@1008";
 
 // Admin check middleware
