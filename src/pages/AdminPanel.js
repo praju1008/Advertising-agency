@@ -49,6 +49,32 @@ const AdminPanel = () => {
     }
   };
 
+  // Tawk.to: load only on Admin page and clean up on unmount
+  useEffect(() => {
+    // Do not load if already present
+    if (document.getElementById("tawk-embed-script")) return;
+
+    const s1 = document.createElement("script");
+    s1.id = "tawk-embed-script";
+    s1.async = true;
+    s1.src = "https://embed.tawk.to/69048183b22c021953b686b7/1j8spjqso";
+    s1.charset = "UTF-8";
+    s1.setAttribute("crossorigin", "*");
+
+    const firstScript = document.getElementsByTagName("script")[0];
+    firstScript.parentNode.insertBefore(s1, firstScript);
+
+    return () => {
+      // remove widget script and global object when leaving Admin
+      const existing = document.getElementById("tawk-embed-script");
+      if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
+      // try to remove the injected iframe/container if present
+      const tawkContainer = document.querySelector("#tawkchat-container, #tawk_visitor, iframe[src*='tawk.to']");
+      if (tawkContainer && tawkContainer.parentNode) tawkContainer.parentNode.removeChild(tawkContainer);
+      window.Tawk_API = undefined;
+    };
+  }, []); // mount once on Admin render [web:213][web:208]
+
   if (!token) return <AdminLogin setToken={setToken} />;
 
   return (
