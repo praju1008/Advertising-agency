@@ -5,15 +5,20 @@ import '../styles/Footer.css';
 const Footer = () => {
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
   const [status, setStatus] = useState(null);
+  const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitting(true);
+    setStatus(null);
     try {
-      await axios.post('http://localhost:5000/api/contact', form); // Make sure your backend accepts phone!
-      setStatus('Message sent. Thank you!');
+      await axios.post('http://localhost:5000/api/contact', form); // backend accepts phone
+      setStatus({ kind: 'ok', text: 'Message sent. Thank you!' });
       setForm({ name: '', email: '', phone: '', message: '' });
     } catch (err) {
-      setStatus('Error sending message.');
+      setStatus({ kind: 'err', text: 'Error sending message. Please try again.' });
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -30,7 +35,7 @@ const Footer = () => {
           <div className="footer-info-icon-row">
             <span className="footer-icon-demo"><i className="fas fa-phone-alt"></i></span>
             <span className="footer-info-value">
-              <a href="tel:+91 9844248804" className="footer-tel-link">+91 9844248804</a>
+              <a href="tel:+919844248804" className="footer-tel-link">+91 9844248804</a>
             </span>
           </div>
           <div className="footer-info-icon-row">
@@ -57,6 +62,7 @@ const Footer = () => {
             </a>
           </div>
         </div>
+
         <div className="footer-form-demo">
           <form onSubmit={handleSubmit}>
             <input
@@ -91,12 +97,27 @@ const Footer = () => {
               required
               value={form.message}
               onChange={e => setForm({ ...form, message: e.target.value })}
-            ></textarea>
-            <button type="submit">SEND MESSAGE</button>
+            />
+            <button type="submit" disabled={submitting}>
+              {submitting ? (
+                <>
+                  <span className="footer-spinner" aria-hidden="true" />
+                  Sending...
+                </>
+              ) : (
+                'SEND MESSAGE'
+              )}
+            </button>
           </form>
-          {status && <div className="status">{status}</div>}
+
+          {status && (
+            <div className={`status ${status.kind === 'ok' ? 'ok' : 'err'}`}>
+              {status.text}
+            </div>
+          )}
         </div>
       </div>
+
       <div className="footer-bar-demo">
         <span>© THIMASHETTI PUBLICITY | ALL RIGHTS RESERVED</span>
         <a href="#top" className="footer-to-top">TO THE TOP <span className="footer-top-arrow">↑</span></a>

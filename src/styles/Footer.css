@@ -177,3 +177,38 @@
     font-size: 11px;
   }
 }
+
+
+/* Button loading state */
+.footer-form-demo button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.footer-form-demo button[disabled] {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+/* Minimal spinner */
+.footer-spinner {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.35);
+  border-top-color: #111827; /* dark center to show motion on yellow btns */
+  animation: footer-spin .8s linear infinite;
+  background: transparent;
+}
+
+@keyframes footer-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Status messages */
+.status {
+  margin-top: 10px;
+  font-size: 14px;
+}
+.status.ok { color: #22c55e; }
+.status.err { color: #ef4444; }
