@@ -30,7 +30,7 @@ const Footer = () => {
           <div className="footer-info-icon-row">
             <span className="footer-icon-demo"><i className="fas fa-phone-alt"></i></span>
             <span className="footer-info-value">
-              <a href="tel:+91 9844642266" className="footer-tel-link">+91 9844642266</a>
+              <a href="tel:+91 9844248804" className="footer-tel-link">+91 9844248804</a>
             </span>
           </div>
           <div className="footer-info-icon-row">
