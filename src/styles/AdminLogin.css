@@ -82,3 +82,38 @@
     min-width: 0;
   }
 }
+
+
+/* Button loading state */
+.admin-login-form button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+.admin-login-form button[disabled] {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+/* Minimal spinner */
+.admin-spinner {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.35);
+  border-top-color: #111827;
+  animation: admin-spin .8s linear infinite;
+  background: transparent;
+}
+
+@keyframes admin-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Error note (kept your class name) */
+.err {
+  margin-top: 10px;
+  color: #ef4444;
+  font-size: 14px;
+}
