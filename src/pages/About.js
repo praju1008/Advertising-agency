@@ -20,7 +20,7 @@ const About = () => {
 
       {/* Intro */}
       <section className="about-content" data-aos="fade-up">
-        <h2>About <span className="highlight">Us</span></h2>
+        <h2 >About <span className="highlight">Us</span></h2>
         <p>
          1) 25+ years of trust: Established in 2000, serving brands across Vijayapura with measurable, lead‑driven advertising outcomes.
         </p>
@@ -61,29 +61,9 @@ const About = () => {
             </p>
             <p><strong>Mobile:</strong> 9980322520 / 9844248804</p>
             <p><strong>Email:</strong> tpadvtvjp@gmail.com</p>
-            <p><strong>Website:</strong> —</p>
+          
           </div>
 
-          {/* <div className="info-card">
-            <h3>Senior Staff</h3>
-            <p><strong>Name:</strong> Kailas Timashetti</p>
-            <p><strong>Designation:</strong> Manager</p>
-          </div>
-
-          <div className="info-card">
-            <h3>Representative</h3>
-            <p><strong>Name:</strong> Basavaraj Hosur</p>
-            <p><strong>Business Office:</strong> Running text as per requirement</p>
-          </div>
-
-          <div className="info-card">
-            <h3>OPCR</h3>
-            <p><strong>Name:</strong> Kailas Timashetti</p>
-            <p><strong>Designation:</strong> Manager</p>
-            <p><strong>Address:</strong> Vijayapura</p>
-            <p><strong>Phone:</strong> 9844248804</p>
-            <p><strong>Email:</strong> 2061kailash@gmail</p>
-          </div> */}
         </div>
       </section>
 
