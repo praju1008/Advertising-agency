@@ -1,160 +1,160 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import '../styles/AdminPanel.css';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const JobsAdmin = ({ token }) => {
   const [jobs, setJobs] = useState([]);
-  const [form, setForm] = useState({ id: null, title: '', description: '' });
-  const [editing, setEditing] = useState(false);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [editing, setEditing] = useState(null); // job being edited
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    if (!token) return;
-    axios.get('http://localhost:5000/api/jobs', {
-      headers: { Authorization: 'Bearer ' + token }
-    })
-      .then(res => setJobs(res.data.data))
-      .catch(e => {
-        if (e.response && e.response.status === 401) {
-          alert('Session expired, login required!');
-          window.location.reload();
-        }
-      });
-  }, [token]);
+  const authHeader = { Authorization: "Bearer " + token };
 
   const fetchJobs = async () => {
-    if (!token) return;
     try {
-      const res = await axios.get('http://localhost:5000/api/jobs', {
-        headers: { Authorization: 'Bearer ' + token }
+      const res = await axios.get("http://localhost:5000/api/jobs", {
+        headers: authHeader,
       });
-      setJobs(res.data.data);
-    } catch (e) {
-      if (e.response && e.response.status === 401) {
-        alert('Session expired, please log in again.');
-        window.location.reload();
-      }
+      setJobs(res.data?.data || []);
+    } catch {
+      setJobs([]);
     }
-  }
+  };
 
-  const handleSave = async (e) => {
-    e.preventDefault();
-    if (!token) {
-      alert("You are not authenticated! Please login again.");
-      return;
-    }
+  useEffect(() => {
+    if (token) fetchJobs();
+    // eslint-disable-next-line
+  }, [token]);
+
+  const resetForm = () => {
+    setTitle("");
+    setDescription("");
+    setEditing(null);
+  };
+
+  const handleAdd = async () => {
+    if (!title.trim()) return;
+    setLoading(true);
     try {
-      if (editing) {
-        await axios.put(
-          `http://localhost:5000/api/jobs/${form.id}`,
-          { title: form.title, description: form.description },
-          { headers: { Authorization: 'Bearer ' + token } }
-        ).catch(e => {
-          if (e.response && e.response.status === 401) {
-            alert('Session expired, please log in again.');
-            window.location.reload();
-          }
-          throw e;
-        });
-      } else {
-        await axios.post(
-          'http://localhost:5000/api/jobs',
-          { title: form.title, description: form.description },
-          { headers: { Authorization: 'Bearer ' + token } }
-        ).catch(e => {
-          if (e.response && e.response.status === 401) {
-            alert('Session expired, please log in again.');
-            window.location.reload();
-          }
-          throw e;
-        });
-      }
-      setForm({ id: null, title: '', description: '' });
-      setEditing(false);
-      await fetchJobs();
-    } catch (e) {
-      if (!(e.response && e.response.status === 401)) {
-        alert('Failed to update job.');
-      }
+      await axios.post(
+        "http://localhost:5000/api/jobs",
+        { title: title.trim(), description: description.trim() },
+        { headers: authHeader }
+      );
+      resetForm();
+      fetchJobs();
+    } finally {
+      setLoading(false);
     }
   };
 
-  const handleEdit = (job) => {
-    setEditing(true);
-    setForm(job);
+  const handleUpdate = async () => {
+    if (!editing) return;
+    if (!title.trim()) return;
+    setLoading(true);
+    try {
+      await axios.put(
+        `http://localhost:5000/api/jobs/${editing.id}`,
+        { title: title.trim(), description: description.trim() },
+        { headers: authHeader }
+      );
+      resetForm();
+      fetchJobs();
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleDelete = async (id) => {
-    if (!token) {
-      alert("You are not authenticated! Please login again.");
-      return;
+  const handleDelete = async (job) => {
+    if (!window.confirm(`Delete "${job.title}"?`)) return;
+    setLoading(true);
+    try {
+      await axios.delete(`http://localhost:5000/api/jobs/${job.id}`, {
+        headers: authHeader,
+      });
+      // Optimistic update then refetch to keep order consistent
+      setJobs((prev) => prev.filter((j) => j.id !== job.id));
+      fetchJobs();
+    } finally {
+      setLoading(false);
     }
-    if (window.confirm('Delete this job?')) {
-      try {
-        await axios.delete(
-          `http://localhost:5000/api/jobs/${id}`,
-          { headers: { Authorization: 'Bearer ' + token } }
-        ).catch(e => {
-          if (e.response && e.response.status === 401) {
-            alert('Session expired, please login again.');
-            window.location.reload();
-          }
-          throw e;
-        });
-        await fetchJobs();
-      } catch (e) {
-        if (!(e.response && e.response.status === 401)) {
-          alert('Failed to delete job.');
-        }
-      }
-    }
+  };
+
+  const startEdit = (job) => {
+    setEditing(job);
+    setTitle(job.title || "");
+    setDescription(job.description || "");
   };
 
   return (
     <div className="admin-panel-wrapper">
       <h2>Job Openings</h2>
-      <form className="admin-form" onSubmit={handleSave}>
+
+      {/* Add / Edit form */}
+      <div className="admin-jobs-toolbar" style={{ background: "#fff7d6", padding: 12, borderRadius: 8, marginBottom: 12 }}>
         <input
-          value={form.title}
-          onChange={e => setForm(f => ({ ...f, title: e.target.value }))}
           placeholder="Job Title"
-          required
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          style={{ width: 220, marginRight: 12 }}
         />
         <input
-          value={form.description}
-          onChange={e => setForm(f => ({ ...f, description: e.target.value }))}
           placeholder="Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          style={{ width: 320, marginRight: 12 }}
         />
-        <button type="submit">{editing ? "Update" : "Add"} Job</button>
-        {editing && (
-          <button
-            type="button"
-            onClick={() => {
-              setEditing(false);
-              setForm({ id: null, title: '', description: '' });
-            }}>
-            Cancel
+        {!editing ? (
+          <button onClick={handleAdd} disabled={loading}>
+            {loading ? "Adding..." : "Add Job"}
           </button>
+        ) : (
+          <>
+            <button onClick={handleUpdate} disabled={loading}>
+              {loading ? "Saving..." : "Save"}
+            </button>
+            <button onClick={resetForm} style={{ marginLeft: 8 }} disabled={loading}>
+              Cancel
+            </button>
+          </>
         )}
-      </form>
+      </div>
+
+      {/* Jobs table (SL No. instead of ID) */}
       <table className="admin-table">
         <thead>
           <tr>
-            <th>ID</th><th>Title</th><th>Description</th><th>Posted At</th><th>Action</th>
+            <th>SL No.</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Posted At</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          {jobs.map(job => (
-            <tr key={job.id}>
-              <td>{job.id}</td>
-              <td>{job.title}</td>
-              <td>{job.description}</td>
-              <td>{job.postedAt}</td>
-              <td>
-                <button className="admin-edit-btn" onClick={() => handleEdit(job)}>Edit</button>
-                <button className="admin-delete-btn" onClick={() => handleDelete(job.id)}>Delete</button>
-              </td>
+          {jobs.length === 0 ? (
+            <tr>
+              <td colSpan={5} style={{ textAlign: "center" }}>No openings</td>
             </tr>
-          ))}
+          ) : (
+            jobs.map((job, idx) => (
+              <tr key={job.id}>
+                {/* Serial number that always re-indexes 1..N */}
+                <td>{idx + 1}</td>
+                <td>{job.title}</td>
+                <td style={{ whiteSpace: "pre-wrap" }}>{job.description}</td>
+                <td>{job.createdAt || job.postedAt || "—"}</td>
+                <td>
+                  <button className="admin-edit-btn" onClick={() => startEdit(job)} disabled={loading}>
+                    Edit
+                  </button>
+                  <button className="admin-delete-btn" onClick={() => handleDelete(job)} disabled={loading} style={{ marginLeft: 8 }}>
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))
+          )}
         </tbody>
       </table>
     </div>
