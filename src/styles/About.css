@@ -1,189 +1,119 @@
-/* Import Raleway Font */
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700&display=swap');
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* About Page */
+/* Page shell */
 .about-page {
-  font-family: 'Raleway', sans-serif;
-  background: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
 }
 
-/* Hero Section with Background Image */
+/* Hero */
 .about-hero {
   position: relative;
-  height: 280px;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-              url(../../public/assets/images/counter.jpg) no-repeat center center;
-  background-size: cover;
-  background-attachment: fixed;
+  height: 320px;
+  background: url('../../public/assets/images/counter.jpg') center/cover no-repeat;
   display: flex;
+
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
-
 .about-hero-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.3);
-  z-index: 1;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
 }
-
 .about-hero-content {
   position: relative;
-  z-index: 2;
-  text-align: center;
+  z-index: 1;
 }
-
 .about-hero h1 {
-  font-size: 48px;
-  font-weight: 600;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 4px;
+  color: #ffffff;
+  letter-spacing: 2px;
+  font-size: 40px;
+  margin: 0;
 }
 
-/* About Content Section - WHITE BACKGROUND */
-.about-content {
-  padding: 100px 40px;
-  text-align: center;
-  background: #fff;
-  max-width: 1200px;
+/* Sections */
+.about-content,
+.about-cards,
+.team-section {
+  width: min(1100px, 92%);
   margin: 0 auto;
 }
 
+.highlight {
+  color: #000000;
+}
+
+/* About text */
 .about-content h2 {
-  font-size: 48px;
-  font-weight: 400;
-  color: #333;
-  margin-bottom: 40px;
-  letter-spacing: 2px;
+  font-size: 28px;
+  margin: 0 0 12px;
 }
-
-.about-content h2 .highlight {
-  color: #999;
-  font-weight: 600;
-}
-
 .about-content p {
-  font-size: 15px;
-  font-weight: 400;
-  color: #777;
+  color: #061830;
   line-height: 1.8;
-  margin: 0 auto 20px;
-  max-width: 900px;
-  text-align: center;
+  margin: 10px 0;
 }
 
-/* Team Section - LIGHT GRAY BACKGROUND */
-.team-section {
-  padding: 100px 40px;
-  text-align: center;
+/* Cards */
+.about-cards h2 {
+  font-size: 26px;
+  margin-bottom: 16px;
+}
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.info-card {
   background: #f8f8f8;
+  color: #e5e7eb;
+  border: .5px solid #4a4d52;
+  border-radius: 12px;
+  padding: 16px;
+}
+.info-card h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  color: #000000;
+}
+.info-card p {
+  margin: 6px 0;
+  color: #1f2201;
+}
+.info-card strong {
+  color: #000000;
 }
 
+/* Team grid */
 .team-section h2 {
-  font-size: 48px;
-  font-weight: 400;
-  color: #333;
-  margin-bottom: 60px;
-  letter-spacing: 2px;
+  font-size: 26px;
+  margin-bottom: 16px;
 }
-
-.team-section h2 .highlight {
-  color: #999;
-  font-weight: 600;
-}
-
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
 }
-
 .team-member {
-  text-align: center;
+  background: #db8d8d;
+  border: 1px solid #fbfdff;
+  border-radius: 12px;
+  overflow: hidden;
 }
-
 .team-member img {
   width: 100%;
-  max-width: 350px;
-  height: auto;
-  border-radius: 0;
-  transition: transform 0.3s ease;
-}
-
-.team-member img:hover {
-  transform: scale(1.02);
-}
-
-/* AOS Animations */
-[data-aos] {
-  transition-property: transform, opacity;
+  height: 240px;
+  object-fit: cover;
 }
 
 /* Responsive */
-@media screen and (max-width: 1024px) {
-  .about-hero h1 {
-    font-size: 42px;
-  }
-  
-  .about-content h2,
-  .team-section h2 {
-    font-size: 38px;
-  }
-  
-  .team-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+@media (max-width: 900px) {
+  .info-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr 1fr; }
 }
-
-@media screen and (max-width: 768px) {
-  .about-hero {
-    height: 200px;
-  }
-  
-  .about-hero h1 {
-    font-size: 32px;
-  }
-  
-  .about-content,
-  .team-section {
-    padding: 70px 30px;
-  }
-  
-  .about-content h2,
-  .team-section h2 {
-    font-size: 32px;
-  }
-  
-  .about-content p {
-    font-size: 14px;
-  }
-  
-  .team-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .about-hero h1 {
-    font-size: 26px;
-    letter-spacing: 2px;
-  }
-  
-  .about-content h2,
-  .team-section h2 {
-    font-size: 28px;
-  }
+@media (max-width: 560px) {
+  .about-hero { height: 240px; }
+  .about-hero h1 { font-size: 30px; }
+  .team-grid { grid-template-columns: 1fr; }
 }
