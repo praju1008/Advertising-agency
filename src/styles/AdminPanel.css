@@ -1,3 +1,4 @@
+/* ===== Admin Hero ===== */
 .admin-hero-section {
   position: relative;
   width: 100vw;
@@ -46,6 +47,8 @@
   font-size: 20px;
   font-weight: 400;
 }
+
+/* ===== Panels, Headings ===== */
 .admin-panel-wrapper {
   max-width: 1200px;
   margin: 48px auto;
@@ -59,6 +62,8 @@
   margin-bottom: 17px;
   color: #222;
 }
+
+/* ===== Table ===== */
 .admin-table {
   width: 100%;
   border-collapse: collapse;
@@ -75,6 +80,8 @@
   color: #222;
   font-weight: 600;
 }
+
+/* ===== Buttons (legacy actions) ===== */
 .admin-delete-btn {
   color: #fff;
   background: #db5050;
@@ -84,13 +91,14 @@
   cursor: pointer;
   font-weight: 500;
 }
-.admin-delete-btn:hover {
-  background: #a73030;
-}
+.admin-delete-btn:hover { background: #a73030; }
+
 @media (max-width:700px) {
   .admin-table, .admin-table th, .admin-table td { font-size: 11.5px; }
   .admin-panel-wrapper { padding: 6px 1vw; }
 }
+
+/* ===== Old inline form (kept for compatibility) ===== */
 .admin-form {
   display: flex;
   gap: 11px;
@@ -124,17 +132,14 @@
   transition: background 0.19s;
   font-family: Raleway, sans-serif;
 }
-
 .admin-form button[type="button"] {
   background: #dedede;
   color: #5a5a5a;
   font-weight: 700;
 }
+.admin-form button:hover { background: #ffec84; }
 
-.admin-form button:hover {
-  background: #ffec84;
-}
-
+/* ===== Row action buttons ===== */
 .admin-edit-btn {
   background: #5688f7;
   color: #fff;
@@ -158,10 +163,11 @@
   transition: background .17s;
 }
 .admin-delete-btn:hover { background: #a73030; }
+
+/* ===== Global fonts ===== */
 body, html {
   font-family: 'Inter', 'Roboto', Arial, Helvetica, sans-serif;
 }
-
 /* For admin tables and titles */
 .admin-panel-wrapper,
 .admin-table,
@@ -173,3 +179,109 @@ body, html {
 .admin-hero-text p {
   font-family: 'Inter', 'Roboto', Arial, Helvetica, sans-serif !important;
 }
+
+/* ===== Attractive field styles for JobsAdmin toolbar ===== */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 220px;
+}
+.field-label {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #3a3a3a;
+  letter-spacing: .2px;
+}
+.field-control {
+  height: 38px;
+  padding: 8px 12px;
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  background: #fff;
+  color: #111;
+  font-size: 14px;
+  outline: none;
+  transition: border-color .18s, box-shadow .18s, background .18s;
+  width: clamp(200px, 34vw, 360px);
+}
+.field-control::placeholder { color: #9aa3af; }
+.field-control:focus {
+  border-color: #ffd34d;
+  box-shadow: 0 0 0 3px rgba(255,226,114,.35);
+  background: #fffef7;
+}
+
+/* ===== Toolbar: side-by-side fields + buttons ===== */
+.admin-jobs-toolbar {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr auto; /* Title | Description | Buttons */
+  gap: 14px;
+  align-items: end;
+  background: #fff7d6;
+  padding: 12px;
+  border-radius: 8px;
+}
+.admin-jobs-toolbar .field { width: 100%; }
+.admin-jobs-toolbar .field-control { width: 100%; }
+
+/* Keep buttons compact and aligned */
+.admin-jobs-toolbar .btn-primary,
+.admin-jobs-toolbar .btn-secondary,
+.admin-jobs-toolbar > button {
+  white-space: nowrap;
+}
+
+@media (max-width: 800px) {
+  .field { min-width: 100%; }
+  .field-control { width: 100%; }
+}
+@media (max-width: 860px) {
+  .admin-jobs-toolbar { grid-template-columns: 1fr; } /* stack on small screens */
+}
+
+/* ===== Buttons: primary (yellow) and secondary (gray) ===== */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: #ffe272;
+  color: #18171b;
+  border: none;
+  border-radius: 10px;
+  font-weight: 800;
+  letter-spacing: .2px;
+  cursor: pointer;
+  box-shadow: 0 1px 0 rgba(0,0,0,.06), inset 0 -2px 0 rgba(0,0,0,.08);
+  transition: transform .06s ease, background .18s ease, box-shadow .18s ease, opacity .18s ease;
+}
+.btn-primary:hover { background: #ffec84; }
+.btn-primary:active { transform: translateY(1px); box-shadow: 0 0 0 rgba(0,0,0,0), inset 0 0 0 rgba(0,0,0,0); }
+.btn-primary:disabled { opacity: .75; cursor: not-allowed; }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 14px;
+  background: #e5e7eb;
+  color: #374151;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .18s ease, opacity .18s ease;
+}
+.btn-secondary:hover { background: #eef0f3; }
+.btn-secondary:disabled { opacity: .7; cursor: not-allowed; }
+
+/* Tiny inline spinner for button */
+.btn-spinner {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(0,0,0,.18);
+  border-top-color: #18171b;
+  animation: btnspin .8s linear infinite;
+}
+@keyframes btnspin { to { transform: rotate(360deg); } }

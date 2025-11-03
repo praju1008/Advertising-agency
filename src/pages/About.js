@@ -22,7 +22,7 @@ const About = () => {
       <section className="about-content" data-aos="fade-up">
         <h2 >About <span className="highlight">Us</span></h2>
         <p>
-         1) 25+ years of trust: Established in 2000, serving brands across Vijayapura with measurable, lead‑driven advertising outcomes.
+         1) 30+ years of trust: Established in 10000+, serving brands across Vijayapura with measurable, lead‑driven advertising outcomes.
         </p>
         <p>
          2) Full‑service partner: Strategy, creative design, print, and electronic media under one roof for faster turnarounds and consistent quality.

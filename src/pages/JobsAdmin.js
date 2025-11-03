@@ -91,29 +91,59 @@ const JobsAdmin = ({ token }) => {
       <h2>Job Openings</h2>
 
       {/* Add / Edit form */}
-      <div className="admin-jobs-toolbar" style={{ background: "#fff7d6", padding: 12, borderRadius: 8, marginBottom: 12 }}>
-        <input
-          placeholder="Job Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          style={{ width: 220, marginRight: 12 }}
-        />
-        <input
-          placeholder="Description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          style={{ width: 320, marginRight: 12 }}
-        />
+      <div className="admin-jobs-toolbar">
+        <div className="field">
+          <label className="field-label" htmlFor="jobTitle">Job Title</label>
+          <input
+            id="jobTitle"
+            type="text"
+            className="field-control"
+            placeholder="enter a job title (max 80 characters)"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            maxLength={80}
+            required
+          />
+        </div>
+
+        <div className="field">
+          <label className="field-label" htmlFor="jobDesc">Description</label>
+          <input
+            id="jobDesc"
+            type="text"
+            className="field-control"
+            placeholder="enter a description (max 140 characters)"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            maxLength={140}
+            required
+          />
+        </div>
+
         {!editing ? (
-          <button onClick={handleAdd} disabled={loading}>
-            {loading ? "Adding..." : "Add Job"}
+          <button className="btn-primary" onClick={handleAdd} disabled={loading}>
+            {loading ? (
+              <span className="btn-spinner" aria-hidden="true" />
+            ) : (
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 5v14M5 12h14" stroke="#18171b" strokeWidth="2" strokeLinecap="round"/>
+              </svg>
+            )}
+            <span>{loading ? "Adding…" : "Add Job"}</span>
           </button>
         ) : (
           <>
-            <button onClick={handleUpdate} disabled={loading}>
-              {loading ? "Saving..." : "Save"}
+            <button className="btn-primary" onClick={handleUpdate} disabled={loading}>
+              {loading ? <span className="btn-spinner" aria-hidden="true" /> : null}
+              <span>{loading ? "Saving…" : "Save"}</span>
             </button>
-            <button onClick={resetForm} style={{ marginLeft: 8 }} disabled={loading}>
+            <button
+              type="button"
+              className="btn-secondary"
+              onClick={resetForm}
+              disabled={loading}
+              style={{ marginLeft: 8 }}
+            >
               Cancel
             </button>
           </>
@@ -148,7 +178,12 @@ const JobsAdmin = ({ token }) => {
                   <button className="admin-edit-btn" onClick={() => startEdit(job)} disabled={loading}>
                     Edit
                   </button>
-                  <button className="admin-delete-btn" onClick={() => handleDelete(job)} disabled={loading} style={{ marginLeft: 8 }}>
+                  <button
+                    className="admin-delete-btn"
+                    onClick={() => handleDelete(job)}
+                    disabled={loading}
+                    style={{ marginLeft: 8 }}
+                  >
                     Delete
                   </button>
                 </td>
