@@ -101,4 +101,91 @@
   .client-logos-demo { flex-direction: column; gap: 12px;}
   .logo-demo-box { width: 100%; max-width: 230px; min-width: 0; height: 60px;}
 }
+/* Lane masks overflow so there’s no blank */
+.client-logos-demo {
+  width: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+}
 
+/* A non-wrapping lane that holds two identical tracks */
+.logos-lane {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  position: relative;
+}
+
+/* One full sequence of logos */
+.logos-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 32px;               /* match your card spacing */
+  padding: 0 32px;         /* slight side padding so edges aren’t clipped */
+  white-space: nowrap;
+  flex: 0 0 auto;          /* do not shrink or grow; keep intrinsic width */
+  will-change: transform;
+  animation: logos-marquee 28s linear infinite;
+}
+
+/* The clone starts immediately after the first track */
+.logos-track--clone {
+  animation: logos-marquee-clone 28s linear infinite;
+}
+
+/* Move exactly one track width to the left */
+@keyframes logos-marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+/* The clone follows behind and ends where the first started */
+@keyframes logos-marquee-clone {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Pause both on hover (optional) */
+.client-logos-demo:hover .logos-track {
+  animation-play-state: paused;
+}
+
+/* Your existing card look (unchanged) */
+.logo-demo-box {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 110px;
+  min-width: 170px;        /* keep a predictable track width */
+  padding: 15px 32px;
+  border-radius: 0px;
+  box-shadow: 0 2px 15px rgba(36,34,40,0.07);
+  transition: transform 0.3s, box-shadow .3s;
+}
+.logo-demo-box img {
+  max-width: 130px;
+  max-height: 70px;
+  width: auto;
+  height: auto;
+  display: block;
+}
+.logo-demo-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 32px rgba(36,34,40,0.13);
+}
+
+/* Responsive: keep widths stable so loop stays seamless */
+@media (max-width: 1100px) {
+  .logos-track { gap: 20px; padding: 0 20px; }
+  .logo-demo-box { height: 90px; min-width: 120px; }
+}
+@media (max-width: 800px) {
+  .logos-track { gap: 16px; padding: 0 16px; }
+  .logo-demo-box { height: 75px; padding: 10px 12px; }
+  .logo-demo-box img { max-width: 90px; max-height: 55px; }
+}
+@media (max-width: 520px) {
+  .logo-demo-box { height: 60px; min-width: 140px; }
+}
