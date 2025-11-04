@@ -10,6 +10,17 @@ const AdminPanel = () => {
   const [loading, setLoading] = useState(true);
   const [applications, setApplications] = useState([]);
 
+  // Per-row status update state
+  const [updatingId, setUpdatingId] = useState(null);
+  const [nextStatus, setNextStatus] = useState(null);
+
+  // Optional toast notification
+  const [toast, setToast] = useState(null);
+  const showAdminToast = (msg) => {
+    setToast(msg);
+    setTimeout(() => setToast(null), 2200);
+  };
+
   const authHeader = { Authorization: "Bearer " + token };
 
   const fetchMessages = async () => {
@@ -54,36 +65,52 @@ const AdminPanel = () => {
     fetchMessages(); // sync
   };
 
-  // Tawk.to: load only on Admin page and clean up on unmount
-  // useEffect(() => {
-  //   if (document.getElementById("tawk-embed-script")) return;
+  // Accept/Reject handler (with warning on reject, and row removal on reject)
+  const updateApplicationStatus = async (app, status) => {
+    if (!app?.id) return;
 
-  //   const s1 = document.createElement("script");
-  //   s1.id = "tawk-embed-script";
-  //   s1.async = true;
-  //   s1.src = "https://embed.tawk.to/69048183b22c021953b686b7/1j8spjqso";
-  //   s1.charset = "UTF-8";
-  //   s1.setAttribute("crossorigin", "*");
+    // Warn admin on reject
+    if (status === "rejected") {
+      const ok = window.confirm(
+        `Are you sure you want to reject application from ${app.name}?`
+      );
+      if (!ok) return;
+    }
 
-  //   const firstScript = document.getElementsByTagName("script")[0];
-  //   firstScript.parentNode.insertBefore(s1, firstScript);
+    setUpdatingId(app.id);
+    setNextStatus(status);
+    setLoading(true);
+    try {
+      await axios.put(
+        `http://localhost:5000/api/job-applications/${app.id}/status`,
+        { status },
+        { headers: authHeader }
+      );
 
-  //   return () => {
-  //     const existing = document.getElementById("tawk-embed-script");
-  //     if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
-  //     const tawkContainer = document.querySelector(
-  //       "#tawkchat-container, #tawk_visitor, iframe[src*='tawk.to']"
-  //     );
-  //     if (tawkContainer && tawkContainer.parentNode)
-  //       tawkContainer.parentNode.removeChild(tawkContainer);
-  //     window.Tawk_API = undefined;
-  //   };
-  // }, []);
+      if (status === "rejected") {
+        // Remove the row immediately after successful reject
+        setApplications((prev) => prev.filter((a) => a.id !== app.id));
+        showAdminToast(`Rejected application from ${app.name}`);
+      } else {
+        // Otherwise just update status in place
+        setApplications((prev) =>
+          prev.map((a) => (a.id === app.id ? { ...a, status } : a))
+        );
+        showAdminToast(`Accepted application from ${app.name}`);
+      }
+    } finally {
+      setLoading(false);
+      setUpdatingId(null);
+      setNextStatus(null);
+    }
+  };
 
   if (!token) return <AdminLogin setToken={setToken} />;
 
   return (
     <div>
+      {toast && <div className="admin-toast">{toast}</div>}
+
       {/* Video Hero Section */}
       <section className="admin-hero-section">
         <video
@@ -151,7 +178,100 @@ const AdminPanel = () => {
       {/* Job Applications */}
       <div className="admin-panel-wrapper">
         <h2>Job Applications</h2>
-        <table className="admin-table">
+
+        {/* Mobile cards */}
+        <div className="apps-cards">
+          {applications.length === 0 ? (
+            <div className="apps-empty">No applications</div>
+          ) : (
+            applications.map((app, idx) => (
+              <div className="app-card" key={app.id}>
+                <div className="app-card-row">
+                  <span className="badge badge-index">#{idx + 1}</span>
+                  <span className={`badge ${app.status ? `badge-${app.status}` : 'badge-pending'}`}>
+                    {app.status ? app.status : 'pending'}
+                  </span>
+                </div>
+
+                <div className="app-card-row">
+                  <div className="app-label">Job</div>
+                  <div className="app-value">{app.jobTitle || app.jobId}</div>
+                </div>
+
+                <div className="app-card-row">
+                  <div className="app-label">Name</div>
+                  <div className="app-value">{app.name}</div>
+                </div>
+
+                <div className="app-card-row">
+                  <div className="app-label">Email</div>
+                  <div className="app-value">{app.email}</div>
+                </div>
+
+                <div className="app-card-row">
+                  <div className="app-label">Phone</div>
+                  <div className="app-value">{app.phone}</div>
+                </div>
+
+                <div className="app-card-row">
+                  <div className="app-label">Resume</div>
+                  <div className="app-value">
+                    {app.resume ? (
+                      <a
+                        className="link-file"
+                        href={`http://localhost:5000/uploads/${app.resume}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Resume
+                      </a>
+                    ) : '—'}
+                  </div>
+                </div>
+
+                <div className="app-card-row">
+                  <div className="app-label">Message</div>
+                  <div className="app-value" style={{ whiteSpace: 'pre-wrap' }}>
+                    {app.message || '—'}
+                  </div>
+                </div>
+
+                <div className="app-card-row">
+                  <div className="app-label">Applied</div>
+                  <div className="app-value">
+                    {app.appliedAt && new Date(app.appliedAt).toLocaleString()}
+                  </div>
+                </div>
+
+                <div className="app-actions">
+                  <button
+                    className="btn-accept"
+                    disabled={loading}
+                    onClick={() => updateApplicationStatus(app, 'accepted')}
+                    title="Accept"
+                  >
+                    {loading && updatingId === app.id && nextStatus === 'accepted'
+                      ? 'Accepting…'
+                      : 'Accept'}
+                  </button>
+                  <button
+                    className="btn-reject"
+                    disabled={loading}
+                    onClick={() => updateApplicationStatus(app, 'rejected')}
+                    title="Reject"
+                  >
+                    {loading && updatingId === app.id && nextStatus === 'rejected'
+                      ? 'Rejecting…'
+                      : 'Reject'}
+                  </button>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+
+        {/* Desktop table */}
+        <table className="admin-table apps-table">
           <thead>
             <tr>
               <th>SL No.</th>
@@ -162,12 +282,14 @@ const AdminPanel = () => {
               <th>Resume</th>
               <th>Message</th>
               <th>Applied At</th>
+              <th>Status</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {applications.length === 0 ? (
               <tr>
-                <td colSpan={8} style={{ textAlign: "center" }}>No applications</td>
+                <td colSpan={10} style={{ textAlign: "center" }}>No applications</td>
               </tr>
             ) : (
               applications.map((app, idx) => (
@@ -180,18 +302,44 @@ const AdminPanel = () => {
                   <td>
                     {app.resume ? (
                       <a
+                        className="link-file"
                         href={`http://localhost:5000/uploads/${app.resume}`}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         Resume
                       </a>
-                    ) : (
-                      "—"
-                    )}
+                    ) : '—'}
                   </td>
                   <td style={{ whiteSpace: "pre-wrap", maxWidth: 250 }}>{app.message}</td>
                   <td>{app.appliedAt && new Date(app.appliedAt).toLocaleString()}</td>
+                  <td>
+                    <span className={`badge ${app.status ? `badge-${app.status}` : 'badge-pending'}`}>
+                      {app.status ? app.status : 'pending'}
+                    </span>
+                  </td>
+                  <td>
+                    <div className="apps-actions-inline">
+                      <button
+                        className="btn-accept"
+                        disabled={loading}
+                        onClick={() => updateApplicationStatus(app, 'accepted')}
+                      >
+                        {loading && updatingId === app.id && nextStatus === 'accepted'
+                          ? 'Accepting…'
+                          : 'Accept'}
+                      </button>
+                      <button
+                        className="btn-reject"
+                        disabled={loading}
+                        onClick={() => updateApplicationStatus(app, 'rejected')}
+                      >
+                        {loading && updatingId === app.id && nextStatus === 'rejected'
+                          ? 'Rejecting…'
+                          : 'Reject'}
+                      </button>
+                    </div>
+                  </td>
                 </tr>
               ))
             )}
