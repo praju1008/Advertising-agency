@@ -1,75 +1,95 @@
-<<<<<<< HEAD
-# Getting Started with Create React App
+# 🎯 Advertising Agency — Company Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the official **React.js web project** for the **Advertising Agency** brand.  
+It showcases services, portfolio, client highlights, and contact workflows with a clean, fast, and responsive UI.
 
-## Available Scripts
+---
+
+## 🚀 Project Overview
+
+This project is built to:
+- Present agency profile, services, and portfolio work.
+- Highlight creative campaigns and client collaborations.
+- Provide an Admin area for managing content (optional).
+- Offer a responsive layout that works great on mobile and desktop.
+
+---
+
+## 🧩 Tech Stack
+
+| Category | Technology Used |
+|---------|------------------|
+| Frontend Framework | React.js (Create React App) |
+| Styling | CSS3, Flexbox, Gradients |
+| Routing | React Router DOM |
+| Version Control | Git & GitHub |
+| Build Tool | Webpack (via CRA) |
+| Deployment | GitHub Pages / Netlify / Vercel |
+
+---
+
+
+---
+
+## ⚙️ Available Scripts
 
 In the project directory, you can run:
 
 ### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Runs the app in development mode.  
+Open http://localhost:3000 to view it in your browser.
 
 ### `npm run build`
+Builds the app for production in the `build` folder.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `npm test`
+Launches the test runner in interactive mode.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🖼️ Features
 
-### `npm run eject`
+✅ Responsive and modern design  
+✅ Gradient navbar with logo and consistent theme  
+✅ Pages for Home, About us, Services, Career, Contact, Admin 
+✅ Smooth animations and fast loading  
+✅ Clean, maintainable React components  
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🌈 UI Highlights
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Gradient header with agency branding  
+- Consistent spacing and typography across pages  
+- Easy navigation and optimized loading  
+- Mobile-first responsive layout  
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 🧑‍💻 How to Run Locally
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Clone the repository:
+   git clone https://github.com/praju1008/Advertising-agency.git
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. Install dependencies:  cd Advertising-agency
+npm install
 
-### Code Splitting
+3. Start the development: npm start
+  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+ ---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+ 
 
-### Advanced Configuration
+## 👨‍💻 Developer Information
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Developer: Prajwal Mathapati  
+- Role: Full Stack Web Developer  
+- Skills: React.js, Node.js, Express.js, Mysql, GitHub, Responsive Design  
+- Email: mathapatipraju1008@gmail.com  
+- GitHub: https://github.com/praju1008  
+- LinkedIn: https://linkedin.com/in/prajwal-m-3263b11b0
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
-# Advertising-agency
-Thimshetty Advertasing Agency 
->>>>>>> 02a667fec2b4519123f6123caa7e603025c3c733
