@@ -3,8 +3,8 @@ import '../styles/ProjectsGrid.css';
 
 const projects = [
   { title: 'Web Design & Development', img: '/assets/images/web-design.jpg' },
-  { title: 'Print', img: '/assets/images/Print.jpg' },
-  { title: 'Event Exhibition', img: '/assets/images/event.jpg' }
+  { title: 'Advertising', img: '/assets/images/Print.jpg' },
+  { title: 'Brouchers', img: '/assets/images/event.jpg' }
 ];
 
 const ProjectsGrid = () => (
