@@ -116,21 +116,18 @@ app.post('/api/jobs', requireAdmin, (req, res) => {
     res.json({ success: true, insertedId: result.insertId });
   });
 });
-app.put('/api/jobs/:id', requireAdmin, (req, res) => {
+app.put('/api/job-applications/:id/status', requireAdmin, (req, res) => {
   const { id } = req.params;
-  const { title, description } = req.body;
-  db.query('UPDATE jobs SET title=?, description=? WHERE id=?', [title, description, id], (err, result) => {
+  const { status } = req.body; // 'accepted' | 'rejected' | 'pending'
+  if (!['accepted', 'rejected', 'pending'].includes(status)) {
+    return res.status(400).json({ success: false, message: 'Invalid status' });
+  }
+  db.query('UPDATE job_applications SET status = ? WHERE id = ?', [status, id], (err) => {
     if (err) return res.status(500).json({ success: false, error: err.message });
-    res.json({ success: true });
+    res.json({ success: true, message: 'Status updated' });
   });
 });
-app.delete('/api/jobs/:id', requireAdmin, (req, res) => {
-  const { id } = req.params;
-  db.query('DELETE FROM jobs WHERE id=?', [id], (err, result) => {
-    if (err) return res.status(500).json({ success: false, error: err.message });
-    res.json({ success: true });
-  });
-});
+
 
 // JOB APPLICATION FORM (file upload)
 app.post('/api/job-apply', upload.single("resume"), (req, res) => {
@@ -142,7 +139,6 @@ app.post('/api/job-apply', upload.single("resume"), (req, res) => {
     [jobId, jobTitle, name, email, phone, resumeFile, message],
     (err, result) => {
       if (err) return res.status(500).json({ success: false, error: err.message });
-
       res.json({ success: true });
     }
   );
@@ -154,6 +150,24 @@ app.get('/api/job-applications', requireAdmin, (req, res) => {
     if (err) return res.status(500).json({ success: false, error: err.message });
     res.json({ success: true, data: results });
   });
+});
+
+// ADMIN: Update job application status (accept/reject)
+app.put('/api/job-applications/:id/status', requireAdmin, (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body; // expected: 'accepted' | 'rejected'
+  if (!['accepted', 'rejected', 'pending'].includes(status)) {
+    return res.status(400).json({ success: false, message: 'Invalid status' });
+  }
+
+  db.query(
+    'UPDATE job_applications SET status = ? WHERE id = ?',
+    [status, id],
+    (err, result) => {
+      if (err) return res.status(500).json({ success: false, error: err.message });
+      res.json({ success: true, message: 'Status updated' });
+    }
+  );
 });
 
 app.listen(process.env.PORT || 5000, () => {
