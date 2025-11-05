@@ -10,106 +10,140 @@
 /* Services Page */
 .services-page {
   font-family: 'Raleway', sans-serif;
-  background: #fff;
+  /* background removed */
+  /* color removed to inherit from body/theme */
 }
 
-/* Hero Section with Black or Dark Background */
+/* Hero Section — gradient glass */
 .services-hero {
   position: relative;
-  height: 300px;
-  /* For pure black: */
-  /* background: #000; */
-  /* Or for a subtle dark gradient: */
-  background: linear-gradient(rgba(20, 40, 60, 0.9), rgba(20, 40, 60, 0.9)), #000;
-  background-size: cover;
+  height: 320px;
+  background:
+    radial-gradient(60% 80% at 20% 10%, rgba(83, 138, 255, 0.25) 0%, rgba(83, 138, 255, 0) 60%),
+    radial-gradient(50% 70% at 80% 30%, rgba(255, 83, 195, 0.20) 0%, rgba(255, 83, 195, 0) 60%),
+    linear-gradient(180deg, #0f1320 0%, #0a0d16 100%);
   background-attachment: fixed;
+  overflow: hidden;
 }
 
 .services-hero-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.2);
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10,13,22,0.05) 0%, rgba(10,13,22,0.35) 60%, rgba(10,13,22,0.6) 100%);
+  backdrop-filter: blur(2px);
 }
 
 /* Services Content */
 .services-content {
-  padding: 100px 40px;
-  max-width: 1400px;
+  padding: 96px 32px;
+  max-width: 1240px;
   margin: 0 auto;
 }
 
+/* Title */
 .services-title {
-  font-size: 48px;
-  font-weight: 400;
-  color: #333;
+  font-size: 46px;
+  font-weight: 600;
   text-align: center;
-  margin-bottom: 80px;
-  letter-spacing: 2px;
+  margin-bottom: 64px;
+  letter-spacing: 1.2px;
+  color: #0f1320; /* use a dark neutral by default */
 }
 
 .services-title .highlight {
-  color: #999;
-  font-weight: 600;
+  color: #4066c9; /* softer accent blue for light backgrounds */
+  font-weight: 700;
 }
 
-/* Services Grid */
+/* Grid — auto-fit for responsive masonry-like behavior */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 50px;
-  max-width: 1200px;
-  margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+  align-items: stretch;
 }
 
-/* Service Card */
+/* Card — border, subtle glass, soft shadow */
 .service-card {
-  background: #fff;
-  padding: 40px 30px;
+  position: relative;
+  background: linear-gradient(180deg, rgba(10,10,10,0.03) 0%, rgba(10,10,10,0.015) 100%);
+  border: 1px solid rgba(64, 102, 201, 0.18);
+  border-radius: 14px;
+  padding: 28px 22px;
   text-align: center;
-  transition: transform 0.3s ease;
+  box-shadow:
+    0 1px 0 rgba(0,0,0,0.03) inset,
+    0 10px 24px rgba(10, 13, 22, 0.08);
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
 }
 
+/* Hover accent border and lift */
 .service-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
+  border-color: rgba(64, 102, 201, 0.35);
+  box-shadow:
+    0 1px 0 rgba(0,0,0,0.04) inset,
+    0 18px 36px rgba(14, 18, 32, 0.12);
 }
 
-.service-icon-wrapper {
-  margin-bottom: 25px;
+/* Optional glint */
+.service-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 40%);
+  border-radius: 14px;
+  pointer-events: none;
 }
 
+/* Icon wrapper (if used with inline SVGs) */
+.service-icon-wrapper,
 .service-icon {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* If you render SVGs, they will scale nicely */
+.service-icon svg {
+  width: 84px;
+  height: 84px;
+  opacity: 0.92;
+  transition: transform 220ms ease, opacity 220ms ease;
+}
+
+.service-card:hover .service-icon svg {
+  transform: scale(1.04);
+  opacity: 1;
+}
+
+/* Title */
 .service-card h3 {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700; /* Bold the title */
-  color: #222;
-  margin-bottom: 10px;
-  letter-spacing: 0.5px;
+  color: #0f1320;
+  margin-top: 14px;
+  letter-spacing: 0.3px;
 }
 
+/* Tag (if present) */
 .service-tag {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
-  color: #666;
-  margin-bottom: 20px;
+  color: #4066c9;
+  margin-top: 6px;
   font-style: italic;
 }
 
-/* Improved readability for descriptions */
+/* Description (kept for compatibility even if unused) */
 .service-description {
-  font-size: 15px;            /* Slightly larger for comfort */
+  font-size: 14px;
   font-weight: 400;
-  color: #555;                /* Darker for contrast */
-  line-height: 1.9;           /* More breathing space */
+  color: #314160;
+  line-height: 1.8;
   text-align: center;
-  letter-spacing: 0.2px;      /* Subtle tracking for body text */
+  letter-spacing: 0.2px;
+  margin-top: 10px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -119,42 +153,37 @@
   transition-property: transform, opacity;
 }
 
-/* Responsive */
+/* Responsive tweaks */
 @media screen and (max-width: 1024px) {
   .services-hero {
-    height: 250px;
+    height: 280px;
   }
   .services-title {
     font-size: 38px;
-  }
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
+    margin-bottom: 52px;
   }
 }
 
 @media screen and (max-width: 768px) {
   .services-hero {
-    height: 200px;
+    height: 220px;
   }
   .services-content {
-    padding: 70px 30px;
+    padding: 72px 22px;
   }
   .services-title {
     font-size: 32px;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
   }
-  .services-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
+  .service-card {
+    padding: 24px 18px;
+  }
+  .service-icon svg {
+    width: 76px;
+    height: 76px;
   }
   .service-card h3 {
-    font-size: 20px;
-    font-weight: 700; /* keep bold on mobile too */
-  }
-  .service-description {
-    font-size: 14px;         /* maintain readability on small screens */
-    line-height: 1.8;
+    font-size: 19px;
   }
 }
 
@@ -162,8 +191,8 @@
   .services-title {
     font-size: 28px;
   }
-  .service-icon {
-    width: 80px;
-    height: 80px;
+  .service-icon svg {
+    width: 70px;
+    height: 70px;
   }
 }
