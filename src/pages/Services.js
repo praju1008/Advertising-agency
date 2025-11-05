@@ -4,41 +4,63 @@ import 'aos/dist/aos.css';
 import '../styles/Services.css';
 
 const servicesData = [
+
+  // Added items from your Services list
   {
-    title: 'Identity Design',
-    tag: '#LetsBeDistinctive',
-    description: 'Developing a distinctive identity design makes your brand a unique one. In today\'s competitive world, visual identity is really the tip of the iceberg. We offer this powerful communication tool to your advantage and thus it defines how customers perceive your brand in the market. It\'s the piece of your brand identity that people will be exposed to the most. We design unique and innovative designs.',
+    title: 'Newspaper Advertising',
+    tag: '#PressReach',
+    description:
+      "Plan and place high‑impact ads across regional and national newspapers to build trust and reach at scale. Media planning, ad sizing, language and city editions, and strict deadline management for timely releases.",
     icon: '/assets/images/1.png',
   },
   {
-    title: 'Strategic Branding',
-    tag: '#LetsBuildBrands',
-    description: 'There is saying: A brand is a story that is always being told. Let\'s build your brand story together. We offer you this long-term plan for the development of a successful brand. Starting our research by identifying who the target audience is, we help and advise you in every further step like keeping your brand distinct from its competitors, building your brand and promote it to catch the eyes of the prospective audience.',
+    title: 'Digital Marketing',
+    tag: '#GoDigital',
+    description:
+      "SEO: Keyword strategy, on‑page optimization, technical fixes, and authority backlinks to lift rankings. Social Media Marketing: Creatives, reels, calendars, and paid campaigns on Instagram, Facebook, LinkedIn, and YouTube. Email Marketing: Strategy, template design, automation journeys, and performance tracking to boost conversions.",
     icon: '/assets/images/2.png',
   },
   {
-    title: 'Packing Design',
-    tag: '#LetsPackPerfection',
-    description: 'A product is only as good as the packaging around it. Let\'s pack it perfectly. We help your product develop a base with distinctive packaging design. From a marketing perspective, your packaging is an important element of your marketing strategy. We make your product\'s packaging design in a way that it finds itself at the top position at every store.',
+    title: 'Brand Promotion Campaigns',
+    tag: '#MakeItViral',
+    description:
+      "End‑to‑end campaigns from concept to execution—messaging, visual identity, and multi‑channel rollouts. Launch plans, seasonal promos, influencer tie‑ups, and experiential activations to grow awareness and recall.",
     icon: '/assets/images/3.png',
   },
+  // {
+  //   title: 'Flex Printing & Outdoor',
+  //   tag: '#GoOutdoor',
+  //   description:
+  //     "High‑quality flex, vinyl, and eco‑solvent printing for hoardings, banners, standees, and in‑store branding. Site survey, fabrication, mounting, and logistics for events, exhibitions, and retail spaces.",
+  //   icon: '/assets/images/4.png',
+  // },
   {
-    title: 'Creative Design',
-    tag: '#LetsGetCreativity',
-    description: 'It\'s the creative ideas which make a brand stand apart. Celebrating creativity will shape your product in an innovative way. Our team of creative experts works hard to deliver unique designs that capture attention and engage your target audience effectively.',
-    icon: '/assets/images/4.png',
-  },
-  {
-    title: 'Web Design & Development',
-    tag: '#LetsBuildWeb',
-    description: 'Professional web design and development services to create stunning, responsive websites that deliver exceptional user experiences and drive business growth.',
+    title: 'Creative Design & Content',
+    tag: '#CreateToConvert',
+    description:
+      "Ad creatives, brochures, catalogues, packaging, and brand assets tailored to your guidelines and market. Copywriting for ads, landing pages, social posts, and email campaigns that drive action.",
     icon: '/assets/images/5.png',
   },
   {
-    title: 'Print',
-    tag: '#LetsPrint',
-    description: 'High-quality print solutions for all your marketing materials, from brochures and flyers to large format displays that make a lasting impression.',
+    title: 'Performance Advertising',
+    tag: '#PerformanceFirst',
+    description:
+      "Data‑driven ad buying on Google Ads and Meta Ads to generate leads and sales with measurable ROI. Audience targeting, landing pages, A/B testing, and conversion tracking for continuous optimization.",
     icon: '/assets/images/6.png',
+  },
+  {
+    title: 'Website & Landing Pages',
+    tag: '#ConvertFaster',
+    description:
+      "Fast, responsive sites and campaign landing pages focused on conversion and SEO best practices. Analytics setup, forms, and integrations with CRM and marketing tools.",
+    icon: '/assets/images/1.png',
+  },
+  {
+    title: 'Customized Advertising Solutions',
+    tag: '#TailoredForYou',
+    description:
+      "Bespoke media mixes, regional‑language creatives, B2B outreach, and sector‑specific strategies. Flexible packages for product launches, store openings, festivals, and limited‑time promotions.",
+    icon: '/assets/images/2.png',
   },
 ];
 

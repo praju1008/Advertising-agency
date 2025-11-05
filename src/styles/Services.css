@@ -88,8 +88,8 @@
 
 .service-card h3 {
   font-size: 22px;
-  font-weight: 600;
-  color: #333;
+  font-weight: 700; /* Bold the title */
+  color: #222;
   margin-bottom: 10px;
   letter-spacing: 0.5px;
 }
@@ -102,12 +102,16 @@
   font-style: italic;
 }
 
+/* Improved readability for descriptions */
 .service-description {
-  font-size: 14px;
+  font-size: 15px;            /* Slightly larger for comfort */
   font-weight: 400;
-  color: #777;
-  line-height: 1.7;
+  color: #555;                /* Darker for contrast */
+  line-height: 1.9;           /* More breathing space */
   text-align: center;
+  letter-spacing: 0.2px;      /* Subtle tracking for body text */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* AOS Animations */
@@ -146,9 +150,11 @@
   }
   .service-card h3 {
     font-size: 20px;
+    font-weight: 700; /* keep bold on mobile too */
   }
   .service-description {
-    font-size: 13px;
+    font-size: 14px;         /* maintain readability on small screens */
+    line-height: 1.8;
   }
 }
 
