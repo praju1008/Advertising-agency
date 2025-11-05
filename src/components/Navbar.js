@@ -21,7 +21,7 @@ const Navbar = () => {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <Link to="/" className="logo">
-          <img src="/assets/images/logo.png" alt="Naval Logo" />
+          <img src="/assets/images/logo.png" alt="Timashetti Logo" />
         </Link>
         <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
           <li className={location.pathname === '/' ? 'active' : ''}>

@@ -60,7 +60,7 @@ const Career = () => {
   return (
     <div className="career-page">
       <section className="career-hero" data-aos="fade-up">
-        <img src="/assets/images/career.jpg" alt="Careers at Naval" className="career-hero-img" />
+        <img src="/assets/images/career.jpg" alt="Careers at Timashetti" className="career-hero-img" />
         <div className="career-hero-overlay" />
       </section>
       <div className="career-content">

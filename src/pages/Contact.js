@@ -34,7 +34,7 @@ const Contact = () => {
       {/* Full Width Map */}
       <section className="map-section-full" data-aos="fade-up">
         <iframe
-          title="Naval Publicity Map"
+          title="Timashetti Publicity Location"
           className="contact-map-full"
           src="https://www.google.com/maps?q=Timashetti+Publicity,16.8324585,75.7126404&hl=en&z=17&output=embed"
           width="100%"
