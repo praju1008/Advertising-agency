@@ -200,7 +200,7 @@ body {
 .services-section h2 {
   font-size: 48px;
   font-weight: 700;
-  color: #999;
+  color: #1b1515;
   margin-bottom: 60px;
   letter-spacing: 2px;
 }
@@ -212,7 +212,7 @@ body {
   align-items: center;
   gap: 120px;
   padding: 100px 40px;
-  color: #fff;
+  color: #f8f8f8;
   flex-wrap: wrap;
 }
 .stats .stat {
@@ -248,13 +248,13 @@ body {
 .projects-header h2 {
   font-size: 48px;
   font-weight: 700;
-  color: #999;
+  color: #ffffff;
   margin-bottom: 20px;
   font-family: 'Raleway', sans-serif;
   letter-spacing: 2px;
 }
 .projects-header h2 .highlight {
-  color: #fff;
+  color: #ffffff;
   font-weight: 600;
 }
 .projects-header p {
