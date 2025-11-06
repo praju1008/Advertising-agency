@@ -89,7 +89,7 @@ const Footer = () => {
               value={form.phone}
               onChange={e => setForm({ ...form, phone: e.target.value })}
               pattern="[0-9]{10,15}"
-              maxLength={12}
+              maxLength={10}
             />
             <textarea
               placeholder="Your Message"
