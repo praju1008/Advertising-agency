@@ -124,7 +124,7 @@ const Home = () => {
         <div className="projects-header">
           <h2>Our <span className="highlight">Projects</span></h2>
           <p>
-            We build exceptional digital experiences that influence consumer decisions, motivate engagement and foster sharing.
+            We build exceptional digital experiences that influence consumer decisions, motivate engagement and faster sharing.
           </p>
         </div>
         <ProjectsGrid />
