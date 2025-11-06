@@ -1,39 +1,30 @@
 /* Import Raleway Font */
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* Services Page */
 .services-page {
   font-family: 'Raleway', sans-serif;
-  /* background removed */
-  /* color removed to inherit from body/theme */
 }
 
-/* Hero Section — gradient glass */
+/* Hero (unchanged basics, slightly softened) */
 .services-hero {
   position: relative;
   height: 320px;
   background:
-    radial-gradient(60% 80% at 20% 10%, rgba(83, 138, 255, 0.25) 0%, rgba(83, 138, 255, 0) 60%),
-    radial-gradient(50% 70% at 80% 30%, rgba(255, 83, 195, 0.20) 0%, rgba(255, 83, 195, 0) 60%),
+    radial-gradient(60% 80% at 20% 10%, rgba(83,138,255,.22) 0%, rgba(83,138,255,0) 60%),
+    radial-gradient(50% 70% at 80% 30%, rgba(255,83,195,.18) 0%, rgba(255,83,195,0) 60%),
     linear-gradient(180deg, #0f1320 0%, #0a0d16 100%);
   background-attachment: fixed;
   overflow: hidden;
 }
-
 .services-hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(10,13,22,0.05) 0%, rgba(10,13,22,0.35) 60%, rgba(10,13,22,0.6) 100%);
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(10,13,22,0.06) 0%, rgba(10,13,22,0.32) 60%, rgba(10,13,22,0.52) 100%);
   backdrop-filter: blur(2px);
 }
 
-/* Services Content */
+/* Content */
 .services-content {
   padding: 96px 32px;
   max-width: 1240px;
@@ -43,156 +34,101 @@
 /* Title */
 .services-title {
   font-size: 46px;
-  font-weight: 600;
+  font-weight: 700;
   text-align: center;
   margin-bottom: 64px;
-  letter-spacing: 1.2px;
-  color: #0f1320; /* use a dark neutral by default */
+  letter-spacing: 1.1px;
+  color: #0f1320;
 }
+.services-title .highlight { color: #4066c9; }
 
-.services-title .highlight {
-  color: #4066c9; /* softer accent blue for light backgrounds */
-  font-weight: 700;
-}
-
-/* Grid — auto-fit for responsive masonry-like behavior */
+/* Grid */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 28px;
-  align-items: stretch;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Card — border, subtle glass, soft shadow */
+/* Card frame */
 .service-card {
-  position: relative;
-  background: linear-gradient(180deg, rgba(10,10,10,0.03) 0%, rgba(10,10,10,0.015) 100%);
-  border: 1px solid rgba(64, 102, 201, 0.18);
-  border-radius: 14px;
-  padding: 28px 22px;
+  background: #fff;
+  border: 1px solid rgba(20, 40, 60, 0.12);
+  border-radius: 16px;
+  padding: 28px 22px 24px;
   text-align: center;
-  box-shadow:
-    0 1px 0 rgba(0,0,0,0.03) inset,
-    0 10px 24px rgba(10, 13, 22, 0.08);
-  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
-
-/* Hover accent border and lift */
 .service-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(64, 102, 201, 0.35);
-  box-shadow:
-    0 1px 0 rgba(0,0,0,0.04) inset,
-    0 18px 36px rgba(14, 18, 32, 0.12);
+  border-color: rgba(20, 40, 60, 0.22);
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.12);
 }
 
-/* Optional glint */
-.service-card::after {
+/* Hex icon backdrop */
+.service-icon {
+  width: 140px;
+  height: 120px;
+  margin: 0 auto 14px;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+.service-icon::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 40%);
-  border-radius: 14px;
-  pointer-events: none;
+  margin: auto;
+  width: 120px;
+  height: 108px;
+  background: #F4C430;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  box-shadow: 0 4px 10px rgba(244,196,48,0.25) inset;
+  filter: saturate(1.05);
 }
-
-/* Icon wrapper (if used with inline SVGs) */
-.service-icon-wrapper,
-.service-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* If you render SVGs, they will scale nicely */
 .service-icon svg {
-  width: 84px;
-  height: 84px;
-  opacity: 0.92;
-  transition: transform 220ms ease, opacity 220ms ease;
+  position: relative;
+  width: 64px;
+  height: 64px;
+  opacity: 0.95;
+  transition: transform 200ms ease, opacity 200ms ease;
 }
-
 .service-card:hover .service-icon svg {
   transform: scale(1.04);
   opacity: 1;
 }
 
-/* Title */
+/* Title under icon */
 .service-card h3 {
-  font-size: 20px;
-  font-weight: 700; /* Bold the title */
-  color: #0f1320;
-  margin-top: 14px;
-  letter-spacing: 0.3px;
-}
-
-/* Tag (if present) */
-.service-tag {
-  font-size: 13px;
-  font-weight: 500;
-  color: #4066c9;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1d2a38;
+  line-height: 1.35;
   margin-top: 6px;
-  font-style: italic;
 }
 
-/* Description (kept for compatibility even if unused) */
-.service-description {
-  font-size: 14px;
-  font-weight: 400;
-  color: #314160;
-  line-height: 1.8;
-  text-align: center;
-  letter-spacing: 0.2px;
-  margin-top: 10px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* Optional tag/desc kept compatible but hidden by default */
 
-/* AOS Animations */
-[data-aos] {
-  transition-property: transform, opacity;
-}
+.service-description { font-size: 14px; color: #314160; line-height: 1.8; margin-top: 10px; text-align: center; }
 
-/* Responsive tweaks */
-@media screen and (max-width: 1024px) {
-  .services-hero {
-    height: 280px;
-  }
-  .services-title {
-    font-size: 38px;
-    margin-bottom: 52px;
-  }
-}
 
-@media screen and (max-width: 768px) {
-  .services-hero {
-    height: 220px;
-  }
-  .services-content {
-    padding: 72px 22px;
-  }
-  .services-title {
-    font-size: 32px;
-    margin-bottom: 40px;
-  }
-  .service-card {
-    padding: 24px 18px;
-  }
-  .service-icon svg {
-    width: 76px;
-    height: 76px;
-  }
-  .service-card h3 {
-    font-size: 19px;
-  }
+/* Responsive */
+@media (max-width: 1200px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); gap: 22px; }
 }
-
-@media screen and (max-width: 480px) {
-  .services-title {
-    font-size: 28px;
-  }
-  .service-icon svg {
-    width: 70px;
-    height: 70px;
-  }
+@media (max-width: 768px) {
+  .services-content { padding: 72px 22px; }
+  .services-title { font-size: 32px; margin-bottom: 40px; }
+  .services-grid { grid-template-columns: 1fr; gap: 18px; }
+  .service-card { padding: 22px 18px; }
+  .service-icon::before { width: 112px; height: 100px; }
+  .service-icon svg { width: 58px; height: 58px; }
+  .service-card h3 { font-size: 17px; }
+}
+@media (max-width: 480px) {
+  .services-title { font-size: 28px; }
+  .service-icon::before { width: 104px; height: 94px; }
+  .service-icon svg { width: 52px; height: 52px; }
 }

@@ -31,21 +31,9 @@
   filter: brightness(0);
 }
 
-.service-card h3 {
-  font-size: 22px;
-  font-weight: 600;
-  color: #000;
-  margin-bottom: 10px;
-  font-family: 'Raleway', sans-serif;
-}
 
-.service-card .hashtag {
-  font-size: 14px;
-  color: #000;
-  margin-bottom: 15px;
-  font-style: italic;
-  font-family: 'Raleway', sans-serif;
-}
+
+
 
 .service-card .desc {
   font-size: 14px;
