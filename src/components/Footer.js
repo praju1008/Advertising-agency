@@ -119,7 +119,7 @@ const Footer = () => {
       </div>
 
       <div className="footer-bar-demo">
-        <span>© THIMASHETTI PUBLICITY | ALL RIGHTS RESERVED</span>
+        <span>© TIMASHETTI PUBLICITY | ALL RIGHTS RESERVED</span>
         <a href="#top" className="footer-to-top">TO THE TOP <span className="footer-top-arrow">↑</span></a>
       </div>
     </footer>
