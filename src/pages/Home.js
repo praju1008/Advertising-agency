@@ -66,21 +66,21 @@ const Home = () => {
         }}
       >
         <div className="about-preview-content">
-          <h2>About <span className="highlight">Thimashetti</span></h2>
+          <h2>About <span className="highlight">Timashetti</span></h2>
           <p>
-            We are one of the leading & fastest growing advertising agencies in Vijayapur creating engaging content for services that we provide in print and electronic media.
+           1) We are one of the leading & fastest growing advertising agencies in Vijayapur creating engaging content for services that we provide in print and electronic media.
           </p>
           <p>
-            Our mission is to generate leads for your product or service. We also have an adept designing team to satisfy your needs.
+           2)  Our mission is to generate leads for your product or service. We also have an adept designing team to satisfy your needs.
           </p>
           <p>
-            Our team is dedicated to creating, planning and handling advertising and other forms of promotions and marketing for its clients.
+           3) Our team is dedicated to creating, planning and handling advertising and other forms of promotions and marketing for its clients.
           </p>
           <p>
-            We consciously provide services to the clients which are crafted by domain experts who really work hard to make your experience worthwhile.
+           4) We consciously provide services to the clients which are crafted by domain experts who really work hard to make your experience worthwhile.
           </p>
           <p>
-            "Creativity with strategy is called advertising". Reach out to us today and make your product or service stand out in market.
+           5) "Creativity with strategy is called advertising". Reach out to us today and make your product or service stand out in market.
           </p>
           <a href="/about" className="about-btn">MORE ABOUT US</a>
         </div>

@@ -144,7 +144,7 @@ body {
 .about-preview {
   padding: 120px 40px;
   text-align: center;
-  color: #fff;
+  color: #ffffff;
 }
 .about-preview-content {
   max-width: 900px;
@@ -155,7 +155,7 @@ body {
 .about-preview h2 {
   font-size: 48px;
   font-weight: 700;
-  color: #ccc;
+  color: #ffffff;
   margin-bottom: 40px;
   letter-spacing: 2px;
   text-align: center;
@@ -165,12 +165,12 @@ body {
   font-weight: 600;
 }
 .about-preview p {
-  font-size: 15px;
-  color: #ddd;
+  font-size: 22px;
+  color: #f8f8f8;
   line-height: 1.8;
   margin: 0 auto 20px;
   max-width: 850px;
-  text-align: center;
+  text-align: left;
 }
 .about-btn {
   display: inline-block;
