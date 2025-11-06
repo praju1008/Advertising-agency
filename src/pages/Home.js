@@ -67,21 +67,10 @@ const Home = () => {
       >
         <div className="about-preview-content">
           <h2>About <span className="highlight">Timashetti</span></h2>
-          <p>
-           1) We are one of the leading & fastest growing advertising agencies in Vijayapur creating engaging content for services that we provide in print and electronic media.
-          </p>
-          <p>
-           2)  Our mission is to generate leads for your product or service. We also have an adept designing team to satisfy your needs.
-          </p>
-          <p>
-           3) Our team is dedicated to creating, planning and handling advertising and other forms of promotions and marketing for its clients.
-          </p>
-          <p>
-           4) We consciously provide services to the clients which are crafted by domain experts who really work hard to make your experience worthwhile.
-          </p>
-          <p>
-           5) "Creativity with strategy is called advertising". Reach out to us today and make your product or service stand out in market.
-          </p>
+     <p>
+  We are a leading, fast-growing advertising agency in Vijayapur that crafts engaging campaigns across print and electronic media; our mission is to generate qualified leads for your products and services with an adept in‑house design team; we plan, create, and manage end‑to‑end advertising, promotions, and marketing programs for clients; every engagement is handled by domain experts who work diligently to make your experience effective and worthwhile; and because “creativity with strategy is called advertising,” reach out today to make your product or service stand out in the market.
+</p>
+
           <a href="/about" className="about-btn">MORE ABOUT US</a>
         </div>
       </section>
