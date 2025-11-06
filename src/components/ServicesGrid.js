@@ -30,14 +30,14 @@ const DigitalSVG = () => (
 //   </svg>
 // );
 
-// Flex/Outdoor (stacked boards)
-const PrintSVG = () => (
-  <svg width="100" height="100" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <rect x="6" y="6" width="12" height="5" rx="1" stroke="#7a5c1f" strokeWidth="1.6"/>
-    <rect x="5" y="12" width="14" height="6" rx="1.4" stroke="#7a5c1f" strokeWidth="1.6"/>
-    <rect x="8" y="14" width="8" height="3.5" fill="#7a5c1f" opacity="0.16"/>
-  </svg>
-);
+// // Flex/Outdoor (stacked boards)
+// const PrintSVG = () => (
+//   <svg width="100" height="100" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+//     <rect x="6" y="6" width="12" height="5" rx="1" stroke="#7a5c1f" strokeWidth="1.6"/>
+//     <rect x="5" y="12" width="14" height="6" rx="1.4" stroke="#7a5c1f" strokeWidth="1.6"/>
+//     <rect x="8" y="14" width="8" height="3.5" fill="#7a5c1f" opacity="0.16"/>
+//   </svg>
+// );
 
 // Creative (bulb/idea)
 const CreativeSVG = () => (
@@ -88,7 +88,7 @@ const services = [
   { title: 'Newspaper Advertising', Svg: NewspaperSVG },
   { title: 'Digital Marketing', Svg: DigitalSVG },
   // { title: 'Brand Promotion Campaigns', Svg: CampaignSVG },
-  { title: 'Flex Printing & Outdoor', Svg: PrintSVG },
+  // { title: 'Flex Printing & Outdoor', Svg: PrintSVG },
   { title: 'Creative Design & Content', Svg: CreativeSVG },
   { title: 'Website & Landing Pages', Svg: WebSVG },
   { title: 'Brochure & Pamphlet Design', Svg: BrochureSVG },
