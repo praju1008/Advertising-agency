@@ -25,7 +25,7 @@ const About = () => {
          1) 30+ years of trust: Established in 10000+, serving brands across Vijayapura with measurable, lead‑driven advertising outcomes.
         </p>
         <p>
-         2) Full‑service partner: Strategy, creative design, print, and electronic media under one roof for faster turnarounds and consistent quality.
+         2) Full‑service partner: Strategy, creative design and electronic media under one roof for faster turnarounds and consistent quality.
         </p>
         <p>
           3) Expert team leadership: Proprietor Ashok Shivappa Timashetti with on‑ground management by Manager Kailas Timashetti for seamless execution.
