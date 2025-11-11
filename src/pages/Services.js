@@ -27,13 +27,13 @@ const servicesData = [
       "End‑to‑end campaigns from concept to execution—messaging, visual identity, and multi‑channel rollouts. Launch plans, seasonal promos, influencer tie‑ups, and experiential activations to grow awareness and recall.",
     icon: '/assets/images/3.png',
   },
-  // {
-  //   title: 'Flex Printing & Outdoor',
-  //   tag: '#GoOutdoor',
-  //   description:
-  //     "High‑quality flex, vinyl, and eco‑solvent printing for hoardings, banners, standees, and in‑store branding. Site survey, fabrication, mounting, and logistics for events, exhibitions, and retail spaces.",
-  //   icon: '/assets/images/4.png',
-  // },
+  {
+    title: 'Flex Printing & Outdoor',
+    tag: '#GoOutdoor',
+    description:
+      "High‑quality flex, vinyl, and eco‑solvent printing for hoardings, banners, standees, and in‑store branding. Site survey, fabrication, mounting, and logistics for events, exhibitions, and retail spaces.",
+    icon: '/assets/images/4.png',
+  },
   {
     title: 'Creative Design & Content',
     tag: '#CreateToConvert',
@@ -41,13 +41,13 @@ const servicesData = [
       "Ad creatives, brochures, catalogues, packaging, and brand assets tailored to your guidelines and market. Copywriting for ads, landing pages, social posts, and email campaigns that drive action.",
     icon: '/assets/images/5.png',
   },
-  // {
-  //   title: 'Performance Advertising',
-  //   tag: '#PerformanceFirst',
-  //   description:
-  //     "Data‑driven ad buying on Google Ads and Meta Ads to generate leads and sales with measurable ROI. Audience targeting, landing pages, A/B testing, and conversion tracking for continuous optimization.",
-  //   icon: '/assets/images/6.png',
-  // },
+  {
+    title: 'Performance Advertising',
+    tag: '#PerformanceFirst',
+    description:
+      "Data‑driven ad buying on Google Ads and Meta Ads to generate leads and sales with measurable ROI. Audience targeting, landing pages, A/B testing, and conversion tracking for continuous optimization.",
+    icon: '/assets/images/6.png',
+  },
   {
     title: 'Website & Landing Pages',
     tag: '#ConvertFaster',
