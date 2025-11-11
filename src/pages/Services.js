@@ -41,19 +41,19 @@ const servicesData = [
       "Ad creatives, brochures, catalogues, packaging, and brand assets tailored to your guidelines and market. Copywriting for ads, landing pages, social posts, and email campaigns that drive action.",
     icon: '/assets/images/5.png',
   },
-  {
-    title: 'Performance Advertising',
-    tag: '#PerformanceFirst',
-    description:
-      "Data‑driven ad buying on Google Ads and Meta Ads to generate leads and sales with measurable ROI. Audience targeting, landing pages, A/B testing, and conversion tracking for continuous optimization.",
-    icon: '/assets/images/6.png',
-  },
+  // {
+  //   title: 'Performance Advertising',
+  //   tag: '#PerformanceFirst',
+  //   description:
+  //     "Data‑driven ad buying on Google Ads and Meta Ads to generate leads and sales with measurable ROI. Audience targeting, landing pages, A/B testing, and conversion tracking for continuous optimization.",
+  //   icon: '/assets/images/6.png',
+  // },
   {
     title: 'Website & Landing Pages',
     tag: '#ConvertFaster',
     description:
       "Fast, responsive sites and campaign landing pages focused on conversion and SEO best practices. Analytics setup, forms, and integrations with CRM and marketing tools.",
-    icon: '/assets/images/1.png',
+    icon: '/assets/images/6.png',
   },
   {
     title: 'Customized Advertising Solutions',
