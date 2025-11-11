@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+
 const JobsAdmin = ({ token }) => {
   const [jobs, setJobs] = useState([]);
   const [title, setTitle] = useState("");

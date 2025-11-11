@@ -45,7 +45,7 @@ const Footer = () => {
             </span>
           </div>
           <div className="footer-social-row">
-            <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            {/* <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
               <i className="fab fa-facebook-f"></i>
             </a>
             <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
@@ -53,7 +53,7 @@ const Footer = () => {
             </a>
             <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <i className="fab fa-linkedin-in"></i>
-            </a>
+            </a> */}
             <a href="mailto:tpadvtvjp@gmail.com" aria-label="Email">
               <i className="fas fa-envelope"></i>
             </a>
