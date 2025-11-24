@@ -4,7 +4,7 @@ import '../styles/ProjectsGrid.css';
 const projects = [
   { title: 'Web Design & Development', img: '/assets/images/web-design.jpg' },
   { title: 'Advertising', img: '/assets/images/Print.jpg' },
-  { title: 'Brouchers', img: '/assets/images/brochure.jpg' }
+  { title: 'Digital Marketing', img: '/assets/images/digital.jpg' }
 ];
 
 const ProjectsGrid = () => (
