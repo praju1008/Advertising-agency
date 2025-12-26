@@ -40,7 +40,7 @@ const Navbar = () => {
             <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
           </li>
           {/* Admin Button */}
-          <li>
+          {/* <li>
             <Link
               to="/admin-login"
               className="admin-nav-btn"
@@ -49,7 +49,7 @@ const Navbar = () => {
             >
               <i className="fas fa-user-shield"></i> Admin
             </Link>
-          </li>
+          </li> */}
         </ul>
         <div
           className={`hamburger ${menuOpen ? 'open' : ''}`}
