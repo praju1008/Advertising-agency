@@ -21,7 +21,7 @@ const Career = () => {
   useEffect(() => {
     AOS.init({ duration: 1000 });
     axios
-      .get("http://localhost:5000/api/jobs")
+      .get("http://timashettipublicity.in/api/jobs")
       .then((res) => setJobs(res.data.data));
   }, []);
 
@@ -53,7 +53,7 @@ const Career = () => {
     if (resumeFile) formData.append("resume", resumeFile);
 
     try {
-      await axios.post("http://localhost:5000/api/job-apply", formData, {
+      await axios.post("http://timashettipublicity.in/api/job-apply", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       setApplyStatus("Application submitted! Thank you.");

@@ -13,7 +13,7 @@ const JobsAdmin = ({ token }) => {
 
   const fetchJobs = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/jobs", {
+      const res = await axios.get("http://timashettipublicity.in/api/jobs", {
         headers: authHeader,
       });
       setJobs(res.data?.data || []);
@@ -38,7 +38,7 @@ const JobsAdmin = ({ token }) => {
     setLoading(true);
     try {
       await axios.post(
-        "http://localhost:5000/api/jobs",
+        "http://timashettipublicity.in/api/jobs",
         { title: title.trim(), description: description.trim() },
         { headers: authHeader }
       );
@@ -55,7 +55,7 @@ const JobsAdmin = ({ token }) => {
     setLoading(true);
     try {
       await axios.put(
-        `http://localhost:5000/api/jobs/${editing.id}`,
+        `http://timashettipublicity.in/api/jobs/${editing.id}`,
         { title: title.trim(), description: description.trim() },
         { headers: authHeader }
       );
@@ -70,7 +70,7 @@ const JobsAdmin = ({ token }) => {
     if (!window.confirm(`Delete "${job.title}"?`)) return;
     setLoading(true);
     try {
-      await axios.delete(`http://localhost:5000/api/jobs/${job.id}`, {
+      await axios.delete(`http://timashettipublicity.in/api/jobs/${job.id}`, {
         headers: authHeader,
       });
       // Optimistic update then refetch to keep order consistent
