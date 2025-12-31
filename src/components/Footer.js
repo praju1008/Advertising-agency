@@ -12,7 +12,7 @@ const Footer = () => {
     setSubmitting(true);
     setStatus(null);
     try {
-      await axios.post('http://localhost:5000/api/contact', form); // backend accepts phone
+      await axios.post('http://timashettipublicity.in/api/contact', form);
       setStatus({ kind: 'ok', text: 'Message sent. Thank you!' });
       setForm({ name: '', email: '', phone: '', message: '' });
     } catch (err) {

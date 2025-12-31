@@ -29,9 +29,13 @@ const AdminLogin = ({ setToken }) => {
       // });
 
       // Save token to localStorage
+      // After saving token
       setToken(res.data.token);
       localStorage.setItem("admin_token", res.data.token);
       localStorage.setItem("admin_username", username);
+
+      navigate("/admin");
+      window.location.reload(); // add this
 
       // Redirect to admin dashboard
       navigate("/admin");

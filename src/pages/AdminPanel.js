@@ -10,11 +10,9 @@ const AdminPanel = () => {
   const [loading, setLoading] = useState(true);
   const [applications, setApplications] = useState([]);
 
-  // Per-row status update state
   const [updatingId, setUpdatingId] = useState(null);
   const [nextStatus, setNextStatus] = useState(null);
 
-  // Optional toast notification
   const [toast, setToast] = useState(null);
   const showAdminToast = (msg) => {
     setToast(msg);
@@ -25,9 +23,10 @@ const AdminPanel = () => {
 
   const fetchMessages = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/contact-messages", {
-        headers: authHeader,
-      });
+      const res = await axios.get(
+        "http://timashettipublicity.in/api/contact-messages",
+        { headers: authHeader }
+      );
       setMessages(res.data?.data || []);
     } catch {
       setMessages([]);
@@ -38,9 +37,10 @@ const AdminPanel = () => {
 
   const fetchApplications = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/job-applications", {
-        headers: authHeader,
-      });
+      const res = await axios.get(
+        "http://timashettipublicity.in/api/job-applications",
+        { headers: authHeader }
+      );
       setApplications(res.data?.data || []);
     } catch {
       setApplications([]);
@@ -58,18 +58,17 @@ const AdminPanel = () => {
 
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure to delete this message?")) return;
-    await axios.delete(`http://localhost:5000/api/contact-messages/${id}`, {
-      headers: authHeader,
-    });
-    setMessages((prev) => prev.filter((m) => m.id !== id)); // optimistic
-    fetchMessages(); // sync
+    await axios.delete(
+      `http://timashettipublicity.in/api/contact-messages/${id}`,
+      { headers: authHeader }
+    );
+    setMessages((prev) => prev.filter((m) => m.id !== id));
+    fetchMessages();
   };
 
-  // Accept/Reject handler (with warning on reject, and row removal on reject)
   const updateApplicationStatus = async (app, status) => {
     if (!app?.id) return;
 
-    // Warn admin on reject
     if (status === "rejected") {
       const ok = window.confirm(
         `Are you sure you want to reject application from ${app.name}?`
@@ -82,17 +81,15 @@ const AdminPanel = () => {
     setLoading(true);
     try {
       await axios.put(
-        `http://localhost:5000/api/job-applications/${app.id}/status`,
+        `http://timashettipublicity.in/api/job-applications/${app.id}/status`,
         { status },
         { headers: authHeader }
       );
 
       if (status === "rejected") {
-        // Remove the row immediately after successful reject
         setApplications((prev) => prev.filter((a) => a.id !== app.id));
         showAdminToast(`Rejected application from ${app.name}`);
       } else {
-        // Otherwise just update status in place
         setApplications((prev) =>
           prev.map((a) => (a.id === app.id ? { ...a, status } : a))
         );
@@ -152,7 +149,9 @@ const AdminPanel = () => {
           <tbody>
             {messages.length === 0 && !loading ? (
               <tr>
-                <td colSpan={7} style={{ textAlign: "center" }}>No messages</td>
+                <td colSpan={7} style={{ textAlign: "center" }}>
+                  No messages
+                </td>
               </tr>
             ) : (
               messages.map((msg, idx) => (
@@ -160,11 +159,16 @@ const AdminPanel = () => {
                   <td>{idx + 1}</td>
                   <td>{msg.name}</td>
                   <td>{msg.email}</td>
-                  <td style={{ whiteSpace: "pre-wrap", maxWidth: 300 }}>{msg.message}</td>
+                  <td style={{ whiteSpace: "pre-wrap", maxWidth: 300 }}>
+                    {msg.message}
+                  </td>
                   <td>{msg.phone}</td>
                   <td>{msg.createdAt}</td>
                   <td>
-                    <button className="admin-delete-btn" onClick={() => handleDelete(msg.id)}>
+                    <button
+                      className="admin-delete-btn"
+                      onClick={() => handleDelete(msg.id)}
+                    >
                       Delete
                     </button>
                   </td>
@@ -188,14 +192,20 @@ const AdminPanel = () => {
               <div className="app-card" key={app.id}>
                 <div className="app-card-row">
                   <span className="badge badge-index">#{idx + 1}</span>
-                  <span className={`badge ${app.status ? `badge-${app.status}` : 'badge-pending'}`}>
-                    {app.status ? app.status : 'pending'}
+                  <span
+                    className={`badge ${
+                      app.status ? `badge-${app.status}` : "badge-pending"
+                    }`}
+                  >
+                    {app.status ? app.status : "pending"}
                   </span>
                 </div>
 
                 <div className="app-card-row">
                   <div className="app-label">Job</div>
-                  <div className="app-value">{app.jobTitle || app.jobId}</div>
+                  <div className="app-value">
+                    {app.jobTitle || app.jobId}
+                  </div>
                 </div>
 
                 <div className="app-card-row">
@@ -219,27 +229,33 @@ const AdminPanel = () => {
                     {app.resume ? (
                       <a
                         className="link-file"
-                        href={`http://localhost:5000/uploads/${app.resume}`}
+                        href={`http://timashettipublicity.in/uploads/${app.resume}`}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         Resume
                       </a>
-                    ) : '—'}
+                    ) : (
+                      "—"
+                    )}
                   </div>
                 </div>
 
                 <div className="app-card-row">
                   <div className="app-label">Message</div>
-                  <div className="app-value" style={{ whiteSpace: 'pre-wrap' }}>
-                    {app.message || '—'}
+                  <div
+                    className="app-value"
+                    style={{ whiteSpace: "pre-wrap" }}
+                  >
+                    {app.message || "—"}
                   </div>
                 </div>
 
                 <div className="app-card-row">
                   <div className="app-label">Applied</div>
                   <div className="app-value">
-                    {app.appliedAt && new Date(app.appliedAt).toLocaleString()}
+                    {app.appliedAt &&
+                      new Date(app.appliedAt).toLocaleString()}
                   </div>
                 </div>
 
@@ -247,22 +263,26 @@ const AdminPanel = () => {
                   <button
                     className="btn-accept"
                     disabled={loading}
-                    onClick={() => updateApplicationStatus(app, 'accepted')}
+                    onClick={() => updateApplicationStatus(app, "accepted")}
                     title="Accept"
                   >
-                    {loading && updatingId === app.id && nextStatus === 'accepted'
-                      ? 'Accepting…'
-                      : 'Accept'}
+                    {loading &&
+                    updatingId === app.id &&
+                    nextStatus === "accepted"
+                      ? "Accepting…"
+                      : "Accept"}
                   </button>
                   <button
                     className="btn-reject"
                     disabled={loading}
-                    onClick={() => updateApplicationStatus(app, 'rejected')}
+                    onClick={() => updateApplicationStatus(app, "rejected")}
                     title="Reject"
                   >
-                    {loading && updatingId === app.id && nextStatus === 'rejected'
-                      ? 'Rejecting…'
-                      : 'Reject'}
+                    {loading &&
+                    updatingId === app.id &&
+                    nextStatus === "rejected"
+                      ? "Rejecting…"
+                      : "Reject"}
                   </button>
                 </div>
               </div>
@@ -289,7 +309,9 @@ const AdminPanel = () => {
           <tbody>
             {applications.length === 0 ? (
               <tr>
-                <td colSpan={10} style={{ textAlign: "center" }}>No applications</td>
+                <td colSpan={10} style={{ textAlign: "center" }}>
+                  No applications
+                </td>
               </tr>
             ) : (
               applications.map((app, idx) => (
@@ -303,19 +325,32 @@ const AdminPanel = () => {
                     {app.resume ? (
                       <a
                         className="link-file"
-                        href={`http://localhost:5000/uploads/${app.resume}`}
+                        href={`http://timashettipublicity.in/uploads/${app.resume}`}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         Resume
                       </a>
-                    ) : '—'}
+                    ) : (
+                      "—"
+                    )}
                   </td>
-                  <td style={{ whiteSpace: "pre-wrap", maxWidth: 250 }}>{app.message}</td>
-                  <td>{app.appliedAt && new Date(app.appliedAt).toLocaleString()}</td>
+                  <td
+                    style={{ whiteSpace: "pre-wrap", maxWidth: 250 }}
+                  >
+                    {app.message}
+                  </td>
                   <td>
-                    <span className={`badge ${app.status ? `badge-${app.status}` : 'badge-pending'}`}>
-                      {app.status ? app.status : 'pending'}
+                    {app.appliedAt &&
+                      new Date(app.appliedAt).toLocaleString()}
+                  </td>
+                  <td>
+                    <span
+                      className={`badge ${
+                        app.status ? `badge-${app.status}` : "badge-pending"
+                      }`}
+                    >
+                      {app.status ? app.status : "pending"}
                     </span>
                   </td>
                   <td>
@@ -323,20 +358,28 @@ const AdminPanel = () => {
                       <button
                         className="btn-accept"
                         disabled={loading}
-                        onClick={() => updateApplicationStatus(app, 'accepted')}
+                        onClick={() =>
+                          updateApplicationStatus(app, "accepted")
+                        }
                       >
-                        {loading && updatingId === app.id && nextStatus === 'accepted'
-                          ? 'Accepting…'
-                          : 'Accept'}
+                        {loading &&
+                        updatingId === app.id &&
+                        nextStatus === "accepted"
+                          ? "Accepting…"
+                          : "Accept"}
                       </button>
                       <button
                         className="btn-reject"
                         disabled={loading}
-                        onClick={() => updateApplicationStatus(app, 'rejected')}
+                        onClick={() =>
+                          updateApplicationStatus(app, "rejected")
+                        }
                       >
-                        {loading && updatingId === app.id && nextStatus === 'rejected'
-                          ? 'Rejecting…'
-                          : 'Reject'}
+                        {loading &&
+                        updatingId === app.id &&
+                        nextStatus === "rejected"
+                          ? "Rejecting…"
+                          : "Reject"}
                       </button>
                     </div>
                   </td>
@@ -347,7 +390,6 @@ const AdminPanel = () => {
         </table>
       </div>
 
-      {/* Job Openings Admin (CRUD) */}
       <JobsAdmin token={token} />
     </div>
   );
