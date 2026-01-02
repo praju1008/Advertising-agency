@@ -22,7 +22,11 @@ const Career = () => {
     AOS.init({ duration: 1000 });
     axios
       .get("http://timashettipublicity.in/api/jobs")
-      .then((res) => setJobs(res.data.data));
+      .then((res) => {
+        const list = Array.isArray(res.data?.data) ? res.data.data : [];
+        setJobs(list);
+      })
+      .catch(() => setJobs([]));
   }, []);
 
   const openApply = (job) => {
@@ -44,6 +48,8 @@ const Career = () => {
 
   const handleApply = async (e) => {
     e.preventDefault();
+    if (!applyingJob) return;
+
     const formData = new FormData();
     Object.keys(applyForm).forEach((key) =>
       formData.append(key, applyForm[key])
@@ -53,9 +59,13 @@ const Career = () => {
     if (resumeFile) formData.append("resume", resumeFile);
 
     try {
-      await axios.post("http://timashettipublicity.in/api/job-apply", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      await axios.post(
+        "http://timashettipublicity.in/api/job-apply",
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
       setApplyStatus("Application submitted! Thank you.");
       setApplyForm({ name: "", email: "", phone: "", message: "" });
       setResumeFile(null);
@@ -75,18 +85,23 @@ const Career = () => {
         />
         <div className="career-hero-overlay" />
       </section>
+
       <div className="career-content">
         <h2 className="career-title">CURRENT OPENINGS</h2>
         <p className="career-email">
           Send your resumes on{" "}
           <a href="mailto:tpadvtvjp@gmail.com">tpadvtvjp@gmail.com</a>
         </p>
+
         <div className="career-job-list">
-          {jobs.length === 0 ? (
+          {Array.isArray(jobs) && jobs.length === 0 && (
             <div style={{ textAlign: "center", color: "#bbb", fontSize: 19 }}>
               No current openings.
             </div>
-          ) : (
+          )}
+
+          {Array.isArray(jobs) &&
+            jobs.length > 0 &&
             jobs.map((job, i) => (
               <div
                 className="career-job-row"
@@ -105,12 +120,10 @@ const Career = () => {
                   Apply
                 </button>
               </div>
-            ))
-          )}
+            ))}
         </div>
       </div>
 
-      {/* Modal for Apply */}
       {showApply && (
         <div className="apply-modal" onClick={() => setShowApply(false)}>
           <div
@@ -124,6 +137,7 @@ const Career = () => {
               ×
             </button>
             <h3>Apply for: {applyingJob?.title}</h3>
+
             <form
               className="apply-form"
               onSubmit={handleApply}
@@ -168,6 +182,7 @@ const Career = () => {
                   required
                 />
               </label>
+
               <textarea
                 name="message"
                 value={applyForm.message}
@@ -175,10 +190,12 @@ const Career = () => {
                 placeholder="Message/Intro"
                 rows={3}
               />
+
               <button type="submit" className="career-apply-submit">
                 Submit Application
               </button>
             </form>
+
             {applyStatus && <div className="apply-status">{applyStatus}</div>}
           </div>
         </div>

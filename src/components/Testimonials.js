@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/Testimonials.css';
+
 const logos = [
   ["/assets/images/Logo-84.png","Bank"],
   ["/assets/images/Logo-85.jpg","Excellent"],
@@ -20,24 +21,37 @@ const logos = [
 const Testimonials = () => {
   return (
     <div className="testimonials-demo-section">
+      <h1
+        style={{
+          color: '#ffffff',
+          textAlign: 'center',
+          fontSize: '46px',
+          fontWeight: 700,
+          marginBottom: '40px',
+        }}
+      >
+        Our Clients
+      </h1>
+
       <div className="client-logos-demo">
-  <div className="logos-lane">
-    <div className="logos-track">
-      {logos.map(([src, alt], i) => (
-        <div className="logo-demo-box" key={`a-${i}`}>
-          <img src={src} alt={alt} />
+        <div className="logos-lane">
+          <div className="logos-track">
+            {logos.map(([src, alt], i) => (
+              <div className="logo-demo-box" key={`a-${i}`}>
+                <img src={src} alt={alt} />
+              </div>
+            ))}
+          </div>
+
+          <div className="logos-track logos-track--clone" aria-hidden="true">
+            {logos.map(([src, alt], i) => (
+              <div className="logo-demo-box" key={`b-${i}`}>
+                <img src={src} alt={alt} />
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
-    </div>
-    <div className="logos-track logos-track--clone" aria-hidden="true">
-      {logos.map(([src, alt], i) => (
-        <div className="logo-demo-box" key={`b-${i}`}>
-          <img src={src} alt={alt} />
-        </div>
-      ))}
-    </div>
-  </div>
-</div>
+      </div>
     </div>
   );
 };
