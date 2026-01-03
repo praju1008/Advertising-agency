@@ -2,13 +2,18 @@ import React, { useState, useEffect } from 'react';
 import ServicesGrid from '../components/ServicesGrid';
 import ProjectsGrid from '../components/ProjectsGrid';
 import Testimonials from '../components/Testimonials';
+import PublisherLogos from '../components/Publishers';
 import '../styles/Home.css';
 
+
+
 const HERO_WORDS = ['CREATIVITY', 'PASSION', 'EXPERIENCE'];
+
 
 const Home = () => {
   const [videoError, setVideoError] = useState(false);
   const [heroIndex, setHeroIndex] = useState(0);
+
 
   useEffect(() => {
     const timer = setTimeout(
@@ -18,7 +23,9 @@ const Home = () => {
     return () => clearTimeout(timer);
   }, [heroIndex]);
 
+
   const handleVideoError = () => setVideoError(true);
+
 
   return (
     <div className="home-page">
@@ -54,6 +61,7 @@ const Home = () => {
         </div>
       </section>
 
+
       {/* About Preview */}
       <section
         className="about-preview"
@@ -68,12 +76,14 @@ const Home = () => {
         <div className="about-preview-content">
           <h2>About <span className="highlight">Timashetti</span></h2>
      <p>
-  We are a leading, fast-growing advertising agency in Vijayapur that crafts engaging campaigns across print and electronic media; our mission is to generate qualified leads for your products and services with an adept in‑house design team; we plan, create, and manage end‑to‑end advertising, promotions, and marketing programs for clients; every engagement is handled by domain experts who work diligently to make your experience effective and worthwhile; and because “creativity with strategy is called advertising,” reach out today to make your product or service stand out in the market.
+  We are a leading, fast-growing advertising agency in Vijayapur that crafts engaging campaigns across print and electronic media; our mission is to generate qualified leads for your products and services with an adept in‑house design team; we plan, create, and manage end‑to‑end advertising, promotions, and marketing programs for clients; every engagement is handled by domain experts who work diligently to make your experience effective and worthwhile; and because "creativity with strategy is called advertising," reach out today to make your product or service stand out in the market.
 </p>
+
 
           <a href="/about" className="about-btn">MORE ABOUT US</a>
         </div>
       </section>
+
 
       {/* What We Do Section */}
       <section className="services-section">
@@ -82,6 +92,7 @@ const Home = () => {
         </h2>
         <ServicesGrid />
       </section>
+
 
       {/* Stats Section */}
       <section
@@ -108,6 +119,11 @@ const Home = () => {
         </div>
       </section>
 
+
+      {/* Publisher Logos Section */}
+      <PublisherLogos />
+
+
       {/* Projects Section */}
       <section className="projects-section">
         <div className="projects-header">
@@ -119,12 +135,15 @@ const Home = () => {
         <ProjectsGrid />
       </section>
 
+
       {/* Testimonials Section */}
       <section className="testimonials-section" style={{ background: '#27213c' }}>
+         {/* <h2>Communication With difference</h2> */}
         <Testimonials />
       </section>
     </div>
   );
 };
+
 
 export default Home;

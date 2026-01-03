@@ -278,7 +278,7 @@ body {
   font-weight: 700;
   margin-bottom: 50px;
   letter-spacing: 2px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: #fff;
 }
 
