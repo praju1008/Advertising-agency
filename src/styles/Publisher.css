@@ -100,12 +100,12 @@
 
 .publisher-slider::before {
   left: 0;
-  background: linear-gradient(to right, #1a1a2e, transparent);
+  /* background: linear-gradient(to right, #1a1a2e, transparent); */
 }
 
 .publisher-slider::after {
   right: 0;
-  background: linear-gradient(to left, #1a1a2e, transparent);
+  /* background: linear-gradient(to left, #1a1a2e, transparent); */
 }
 
 @media (max-width: 768px) {
