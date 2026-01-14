@@ -39,9 +39,7 @@ const PublisherLogos = () => {
 
   return (
     <div className="publisher-logos-section">
-      <h2>
-        Our Publishers
-      </h2>
+      <h2>Our Publishers</h2>
       <p className="publisher-subtitle">
         Trusted partnerships with leading newspapers across Karnataka and India
       </p>
